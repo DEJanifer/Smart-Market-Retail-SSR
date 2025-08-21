@@ -2,11 +2,6 @@ import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
 import path from 'path';
 import fs from 'fs';
 
-// Import the server-side render function from your built SSR bundle.
-// The path is relative to the function's execution environment on Netlify.
-// Assuming 'dist' is at the project root, and the function is in 'netlify/functions'.
-const { render } = require(path.join(__dirname, '..', '..', 'dist', 'server', 'entry-server.js'));
-
 // Read the client-side index.html template.
 // This template will be used to inject the server-rendered React app.
 const templatePath = path.join(__dirname, '..', '..', 'dist', 'client', 'index.html');
@@ -16,6 +11,10 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
   const url = event.path; // Get the requested URL path
 
   try {
+    // Import the server-side render function from your built SSR bundle.
+    // Using dynamic import to properly handle ES modules in Netlify environment.
+    const { render } = await import(path.join(__dirname, '..', '..', 'dist', 'server', 'entry-server.js'));
+
     // Perform Server-Side Rendering using your application's render function.
     // This function generates the HTML content and extracts Helmet data for SEO.
     const { appHtml, helmet, status } = render(url);

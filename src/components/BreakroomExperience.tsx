@@ -45,7 +45,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, text, icon, isExpanded
 
   // Desktop version
   return (
-    <div className="flex flex-col p-4 md:p-6 backdrop-blur-sm bg-navy/30 border border-mint/20 rounded-lg hover:border-mint/40 transition-all group">
+    <div className="flex flex-col p-4 md:p-6 backdrop-blur-sm bg-navy/30 border border-mint/20 rounded-lg hover:border-mint/40 transition-all group card-interactive">
       <div className="p-3 bg-gradient-pastel rounded-lg w-12 h-12 flex items-center justify-center mb-4 text-navy transition-all duration-300 group-hover:shadow-neon">
         {icon}
       </div>

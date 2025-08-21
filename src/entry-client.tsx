@@ -15,8 +15,8 @@ import 'swiper/css/effect-fade';
 
 const container = document.getElementById('root')!;
 
-// Check if the app was server-rendered by looking for SSR markers
-const isServerRendered = container.hasChildNodes() && container.getAttribute('data-server-rendered') === 'true';
+// Check if the app was server-rendered by looking for the data attribute we set in entry-server.tsx
+const isServerRendered = container.hasChildNodes() && container.firstElementChild?.getAttribute('data-server-rendered') === 'true';
 
 const AppWrapper = () => (
   <StrictMode>

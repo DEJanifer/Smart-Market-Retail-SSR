@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:ssr": "tsx server/index.ts",
     "build": "npm run build:client && npm run build:ssr",
-    "build:client": "vite build",
+    "build:client": "vite build --outDir dist/client",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:dev": "vite build --mode development",
     "serve": "NODE_ENV=production node dist/server/index.js",

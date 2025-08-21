@@ -244,7 +244,7 @@ const SolutionsPage: React.FC = () => {
     }
 
     return (
-      <div className="backdrop-blur-sm p-6 rounded-lg border border-mint/20 hover:border-mint/40 transition-all">
+      <div className="backdrop-blur-sm p-6 rounded-lg border border-mint/20 hover:border-mint/40 transition-all card-interactive">
         <div className="flex items-center mb-4">
           <div className="p-3 bg-gradient-pastel rounded-lg mr-4">
             {item.icon}

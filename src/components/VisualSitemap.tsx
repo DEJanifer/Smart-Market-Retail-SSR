@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { locationTypes } from './locationData';
 import { allTowns } from './serviceAreaData'; // Correctly imports 'allTowns'
-import { Home, Zap, Star, Settings, MapPin, Info, Mail, Newspaper, Building, Briefcase, ChevronDown, ChevronRight, ShoppingCart, Refrigerator, Coffee, Building2, HelpCircle } from 'lucide-react';
+import { Home, Zap, Star, Settings, MapPin, Info, Mail, Newspaper, Building, Briefcase, ChevronDown, ChevronRight, ShoppingCart, Refrigerator, Coffee, Building2, HelpCircle, Wrench } from 'lucide-react';
 
 // A reusable component for creating collapsible sections in the sitemap.
 const CollapsibleSection: React.FC<{
@@ -37,6 +37,42 @@ const CollapsibleSection: React.FC<{
 };
 const VisualSitemap: React.FC = () => {
   const location = useLocation();
+  const [activeSection, setActiveSection] = useState<string>('');
+
+  useEffect(() => {
+    // Only add scroll listener on home page
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const handleScroll = () => {
+      const sections = [
+        { id: 'hero', hash: '#hero' },
+        { id: 'breakroom-experience', hash: '#breakroom-experience' },
+        { id: 'breakroom-builder', hash: '#breakroom-builder' },
+        { id: 'about', hash: '#about' },
+        { id: 'benefits', hash: '#benefits' },
+        { id: 'solutions', hash: '#solutions' },
+        { id: 'locations', hash: '#locations' }
+      ];
+
+      const scrollPosition = window.scrollY + 100; // Offset for header
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i].id);
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i].hash);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
 
   // Defines the sections within the "Home" category.
   const homeSections = [{
@@ -44,6 +80,16 @@ const VisualSitemap: React.FC = () => {
     hash: '#hero',
     icon: Zap,
     activeOn: ['/']
+  }, {
+    name: 'Breakroom Experience',
+    hash: '#breakroom-experience',
+    icon: Coffee,
+    activeOn: []
+  }, {
+    name: 'Perfect Breakroom',
+    hash: '#breakroom-builder',
+    icon: Wrench,
+    activeOn: []
   }, {
     name: 'Future of Vending',
     hash: '#about',
@@ -56,7 +102,7 @@ const VisualSitemap: React.FC = () => {
     activeOn: []
   }, {
     name: 'Our Services',
-    hash: '#services',
+    hash: '#solutions',
     icon: Settings,
     activeOn: []
   }, {
@@ -93,7 +139,13 @@ const VisualSitemap: React.FC = () => {
         
         <CollapsibleSection title="Home" icon={Home}>
           {homeSections.map(section => <li key={section.name}>
-              <a href={`/${section.hash}`} className={`text-sm flex items-center transition-colors duration-300 ${section.activeOn.includes(location.pathname) ? 'text-coral' : 'text-lavender hover:text-coral'}`}>
+              <a href={`/${section.hash}`} className={`text-sm flex items-center transition-colors duration-300 ${
+                location.pathname === '/' && activeSection === section.hash 
+                  ? 'text-coral font-semibold' 
+                  : section.activeOn.includes(location.pathname) 
+                  ? 'text-coral' 
+                  : 'text-lavender hover:text-coral'
+              }`}>
                 <section.icon className="mr-3 h-4 w-4" />
                 {section.name}
               </a>

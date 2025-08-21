@@ -2,41 +2,34 @@ import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
 import path from 'path';
 import fs from 'fs';
 
-// Read the client-side index.html template.
-// This template will be used to inject the server-rendered React app.
-const templatePath = path.join(__dirname, '..', '..', 'dist', 'client', 'index.html');
+// Adjust the path to correctly locate the index.html in the deployed environment
+const templatePath = path.resolve(__dirname, '..', '..', 'dist', 'client', 'index.html');
 const template = fs.readFileSync(templatePath, 'utf-8');
 
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
-  const url = event.path; // Get the requested URL path
+  const url = event.path; 
 
   try {
-    // Import the server-side render function from your built SSR bundle.
-    // Using dynamic import to properly handle ES modules in Netlify environment.
-    const { render } = await import(path.join(__dirname, '..', '..', 'dist', 'server', 'entry-server.js'));
-
-    // Perform Server-Side Rendering using your application's render function.
-    // This function generates the HTML content and extracts Helmet data for SEO.
+    // Dynamically import the server entry file
+    const { render } = await import(path.resolve(__dirname, '..', '..', 'dist', 'server', 'entry-server.js'));
     const { appHtml, helmet, status } = render(url);
 
-    // Inject the server-rendered content and Helmet data into the index.html template.
+    // This is the corrected replacement logic
     const html = template
-      .replace('<!--app-head-->', `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`)
-      .replace('<!--app-html-->', appHtml);
+      .replace('', `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`)
+      .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
-    // Return the server-rendered HTML with the appropriate status code.
     return {
       statusCode: status,
       headers: { 'Content-Type': 'text/html' },
       body: html,
     };
   } catch (e) {
-    // Log any errors that occur during SSR for debugging.
+    // Log the error for debugging in Netlify's function logs
     console.error('SSR Error:', e);
-    // Return a 500 Internal Server Error response.
     return {
       statusCode: 500,
-      body: 'Internal Server Error during SSR',
+      body: 'Internal Server Error during SSR. Check function logs.',
     };
   }
 };

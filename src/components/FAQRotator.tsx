@@ -64,7 +64,7 @@ const FAQRotator: React.FC = () => {
             return (
               <div
                 key={`${faq.id}-${currentIndex}-${index}`}
-                className="bg-navy/50 border border-mint/20 rounded-lg p-6 hover:bg-navy/70 transition-all duration-500 animate-fade-in shadow-glow shadow-mint/10 group"
+                className="bg-navy/50 border border-mint/20 rounded-lg p-6 hover:bg-navy/70 transition-all duration-500 animate-fade-in shadow-glow shadow-mint/10 group card-interactive"
               >
                 <div 
                   className="md:hidden cursor-pointer"

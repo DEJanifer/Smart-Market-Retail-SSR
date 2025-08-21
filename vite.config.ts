@@ -18,17 +18,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // This new section tells Vite to import .md files as raw text
   assetsInclude: ['**/*.md'],
-  // SSR configuration
   ssr: {
     noExternal: ['react-helmet-async'],
-  },
-  build: {
-    rollupOptions: {
-      input: mode === 'development' ? undefined : {
-        main: path.resolve(__dirname, 'index.html')
-      }
-    }
   }
 }))

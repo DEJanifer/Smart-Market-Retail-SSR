@@ -12,7 +12,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     const { render } = await import(path.resolve(__dirname, '..', '..', 'dist', 'server', 'entry-server.js'));
     const { appHtml, helmet, status } = render(url);
 
-    // Robust replacement using a regular expression
+    // This robust replacement uses a regular expression to find the entire root div
     const html = template
       .replace('', `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`)
       .replace(/<div id="root">.*?<\/div>/, `<div id="root">${appHtml}</div>`);

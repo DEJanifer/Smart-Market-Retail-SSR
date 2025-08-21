@@ -62,7 +62,7 @@ We’ve calculated the gains in productivity, the savings in retention, and the 
 
 For most businesses, this is the reality. Smart Market Retail provides, installs, and fully services state-of-the-art Micro Markets and smart vending solutions at [no cost to your business.](https://smartmarketretail.com/faq#cost-to-business) We manage the inventory, the technology, and the service. You simply provide the space for this powerful amenity.
 
-When your capital investment is $0, any financial gain you receive—from that $4000 in daily reclaimed productivity to the $20,000 saved by retaining one employee—results in a technically infinite ROI. You get all of the upside without the upfront cost, making this one of the safest, smartest financial decisions a manager can make.
+When your capital investment is $0, any financial gain you receive—from that $400 in daily reclaimed productivity to the $20,000 saved by retaining one employee—results in a technically infinite ROI. You get all of the upside without the upfront cost, making this one of the safest, smartest financial decisions a manager can make.
 
 &nbsp; 
 

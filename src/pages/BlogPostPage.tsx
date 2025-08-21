@@ -4,6 +4,7 @@ import PageLayout from '../components/PageLayout';
 import NotFoundPage from './NotFoundPage';
 import fm from 'front-matter';
 import { marked } from 'marked';
+import { BlogPost } from '../types/blog';
 import { 
   ArrowLeft, 
   Calendar, 
@@ -30,7 +31,7 @@ const postsBySlug = Object.values(postModules).reduce((acc, rawContent) => {
 
 const BlogPostPage: React.FC = () => {
   const { postId: postSlug } = useParams<{ postId: string }>();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [copySuccess, setCopySuccess] = useState('');
 

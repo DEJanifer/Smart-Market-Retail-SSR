@@ -2,18 +2,10 @@ import React, { useMemo } from 'react';
 import { ShoppingCart, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import * as frontMatter from 'front-matter';
+import { BlogPost } from '../types/blog';
 
 // Load all blog posts
 const postModules = import.meta.glob('/src/posts/*.md', { eager: true, query: '?raw', import: 'default' });
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  author: string;
-  summary?: string;
-  content: string;
-}
 
 const posts: BlogPost[] = Object.entries(postModules).map(([path, content]) => {
   const parsed = frontMatter.default(content as string);

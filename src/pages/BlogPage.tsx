@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 import fm from 'front-matter';
 import { ArrowRight, ArrowUpDown } from 'lucide-react';
+import { BlogPost } from '../types/blog';
 
 // This uses Vite's 'import.meta.glob' to automatically find all .md files in the posts directory.
 // The 'eager: true' part ensures the files are loaded immediately.
 const postModules = import.meta.glob('/src/posts/*.md', { as: 'raw', eager: true });
 
 // This now correctly maps over the post content and extracts the metadata (attributes).
-const posts = Object.values(postModules).map((rawContent) => {
+const posts: BlogPost[] = Object.values(postModules).map((rawContent) => {
   const { attributes }: { attributes: any } = fm(rawContent);
   return attributes;
 }).filter(post => post && post.title); // Ensure we only show posts that have a title

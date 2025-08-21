@@ -397,7 +397,7 @@ const SolutionsPage: React.FC = () => {
             {solutions.map((solution, index) => (
               <div key={solution.id} className="fade-in">
                 {/* Desktop Layout */}
-                <div className="hidden md:block backdrop-blur-sm bg-navy/40 border border-mint/20 rounded-2xl p-8 md:p-12 shadow-glow card-interactive">
+                <div className="hidden md:block backdrop-blur-sm bg-navy/40 border border-mint/20 rounded-2xl p-8 md:p-12 shadow-glow">
                   <div className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} gap-12 items-center`}>
                     <div className="md:w-1/2">
                       <div className="rounded-lg overflow-hidden">
@@ -462,7 +462,7 @@ const SolutionsPage: React.FC = () => {
                 </div>
 
                 {/* Mobile Layout */}
-                <div className="md:hidden backdrop-blur-sm bg-navy/40 border border-mint/20 rounded-2xl p-6 shadow-glow card-interactive">
+                <div className="md:hidden backdrop-blur-sm bg-navy/40 border border-mint/20 rounded-2xl p-6 shadow-glow">
                   <div className="flex items-center mb-6">
                     {solution.icon}
                     <h2 className="text-3xl font-bold ml-4">

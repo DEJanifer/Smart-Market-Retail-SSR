@@ -91,7 +91,7 @@ const Benefits: React.FC = () => {
   };
 
   return (
-    <section id="benefits" className="py-12 md:py-16 lg:py-24 relative overflow-hidden">
+    <div className="flex flex-col p-4 md:p-6 backdrop-blur-sm bg-navy/30 border border-mint/20 rounded-lg card-interactive hover:border-mint/40 group">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Desktop Card Container */}
         <div className="hidden md:block backdrop-blur-sm bg-navy/40 border border-mint/20 rounded-2xl p-8 md:p-12 shadow-glow">

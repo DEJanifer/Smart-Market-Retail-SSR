@@ -8,7 +8,7 @@ const Benefits: React.FC = () => {
   const toggleBenefit = (index: number) => {
     setExpandedBenefit(expandedBenefit === index ? null : index);
   };
-
+  
   const benefits = [
     {
       icon: <DollarSign className="h-6 w-6 text-coral" />,

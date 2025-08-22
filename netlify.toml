@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && cp -r public/* dist/client/ && cp public/_redirects dist/client/_redirects"
+  command = "npm run build && echo 'Copying images...' && cp -r public/*.webp dist/client/ 2>/dev/null || true && cp -r public/*.jpg dist/client/ 2>/dev/null || true && cp -r public/*.png dist/client/ 2>/dev/null || true && cp -r public/*.svg dist/client/ 2>/dev/null || true && cp -r public/*.ico dist/client/ 2>/dev/null || true && echo 'Copying redirects...' && cp public/_redirects dist/client/_redirects && echo 'Build complete!'"
   publish = "dist/client"
 
 [functions]

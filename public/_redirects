@@ -1,40 +1,64 @@
-# DO NOT route images through functions - serve them directly
-# This MUST come before the catch-all rule
+# === STATIC ASSETS - SERVE DIRECTLY ===
+# These MUST come first to prevent routing through functions
 
-# Handle all WebP images with size suffixes
-*.webp    /:splat.webp    200
-*_small.webp    /:splat_small.webp    200
-*_medium.webp   /:splat_medium.webp   200
-*_large.webp    /:splat_large.webp    200
+# Logo images
+/Logo*    /Logo:splat    200
 
-# Handle all other image formats
-*.jpg     /:splat.jpg     200
-*.jpeg    /:splat.jpeg    200
-*.png     /:splat.png     200
-*.svg     /:splat.svg     200
-*.gif     /:splat.gif     200
-*.ico     /:splat.ico     200
+# Smart Store images
+/Smart*   /Smart:splat   200
 
-# Handle fonts
-*.woff    /:splat.woff    200
-*.woff2   /:splat.woff2   200
-*.ttf     /:splat.ttf     200
-*.eot     /:splat.eot     200
+# Micro Market images
+/Large*   /Large:splat   200
+/Medium*  /Medium:splat  200
+/Small*   /Small:splat   200
+/Starter* /Starter:splat 200
 
-# Handle other static assets
-*.js      /:splat.js      200
-*.css     /:splat.css     200
-*.pdf     /:splat.pdf     200
-*.json    /:splat.json    200
-*.xml     /:splat.xml     200
-*.txt     /:splat.txt     200
+# Cooler images
+/Cool*    /Cool:splat    200
 
-# Handle assets folder
-/assets/*    /assets/:splat    200
+# Vending images
+/Merchant* /Merchant:splat 200
+/BevMax*  /BevMax:splat  200
 
-# Now handle page routes through SSR
-# Homepage
-/    /.netlify/functions/ssr    200!
+# Location images
+/Main*    /Main:splat    200
+/Construction* /Construction:splat 200
+/McDaniel* /McDaniel:splat 200
+/Mid-rise* /Mid-rise:splat 200
+/high*    /high:splat    200
+/Taneytown* /Taneytown:splat 200
+/Old*     /Old:splat     200
+/Owings*  /Owings:splat  200
+/Reisterstown* /Reisterstown:splat 200
+/Eldersburg* /Eldersburg:splat 200
+/Manchester* /Manchester:splat 200
 
-# All other routes (but NOT files with extensions)
-/*    /.netlify/functions/ssr    200!
+# Catch-all for any other images
+/*.webp   /:splat.webp   200
+/*.jpg    /:splat.jpg    200
+/*.jpeg   /:splat.jpeg   200
+/*.png    /:splat.png    200
+/*.svg    /:splat.svg    200
+/*.gif    /:splat.gif    200
+/*.ico    /:splat.ico    200
+
+# Font files
+/*.woff   /:splat.woff   200
+/*.woff2  /:splat.woff2  200
+/*.ttf    /:splat.ttf    200
+/*.eot    /:splat.eot    200
+
+# Other static files
+/*.pdf    /:splat.pdf    200
+/*.json   /:splat.json   200
+/*.xml    /:splat.xml    200
+/*.txt    /:splat.txt    200
+/*.css    /:splat.css    200
+/*.js     /:splat.js     200
+
+# Assets folder
+/assets/* /assets/:splat  200
+
+# === ROUTES - EVERYTHING ELSE THROUGH SSR ===
+# This MUST be last
+/*        /.netlify/functions/ssr    200!

@@ -18,13 +18,22 @@ export default defineConfig({
       output: {
         format: 'cjs',
         entryFileNames: 'entry-server.js',
+        // Bundle everything into a single file
+        inlineDynamicImports: true,
       },
+      // Don't externalize any dependencies - bundle everything
+      external: [],
     },
     target: 'node16',
     minify: false,
+    // Bundle all dependencies
+    commonjsOptions: {
+      ignoreDynamicRequires: true,
+    },
   },
   ssr: {
-    noExternal: ['react-helmet-async'],
-    format: 'cjs',
+    // Don't externalize any packages - bundle everything
+    noExternal: true,
+    target: 'node',
   },
 })

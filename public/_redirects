@@ -1,4 +1,5 @@
 # Serve static assets directly
+/Logo*    /Logo*    200
 /*.js     /*.js     200
 /*.css    /*.css    200
 /*.webp   /*.webp   200
@@ -10,5 +11,8 @@
 /*.woff   /*.woff   200
 /assets/* /assets/:splat 200
 
-# Route all page requests through SSR function
+# Explicitly handle the homepage
+/         /.netlify/functions/ssr  200!
+
+# Route all other page requests through SSR function
 /*        /.netlify/functions/ssr  200!

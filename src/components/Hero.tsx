@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
             <div className="lg:w-1/2 flex justify-center lg:justify-end">
               <picture>
                 <source srcSet="/Logo - Website_small.webp 480w, /Logo - Website_medium.webp 800w, /Logo - Website_large.webp 1200w" sizes="(max-width: 640px) 480px, (max-width: 1024px) 800px, 500px" type="image/webp" />
-                <img src="/Logo - Website_medium.webp" alt="Smart Market Retail Vending Machine" className="w-full max-w-[500px] h-auto object-contain" fetchPriority="high" />
+                <img src="/Logo - Website_medium.webp" alt="Smart Market Retail Vending Machine" className="w-full max-w-[500px] h-auto object-contain" fetchpriority="high" />
               </picture>
             </div>
           </div>
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
               <div className="flex justify-center mb-4">
                 <picture>
                   <source srcSet="/Logo - Website_small.webp 300w, /Logo - Website_medium.webp 600w" sizes="(max-width: 480px) 300px, 400px" type="image/webp" />
-                  <img src="/Logo - Website_medium.webp" alt="Smart Market Retail Vending Machine" className="w-full max-w-[300px] h-auto object-contain" fetchPriority="high" />
+                  <img src="/Logo - Website_medium.webp" alt="Smart Market Retail Vending Machine" className="w-full max-w-[300px] h-auto object-contain" fetchpriority="high" />
                 </picture>
               </div>
 

@@ -1,1 +1,14 @@
-/*    /index.html   200
+# Serve static assets directly
+/*.js     /*.js     200
+/*.css    /*.css    200
+/*.webp   /*.webp   200
+/*.jpg    /*.jpg    200
+/*.png    /*.png    200
+/*.svg    /*.svg    200
+/*.ico    /*.ico    200
+/*.woff2  /*.woff2  200
+/*.woff   /*.woff   200
+/assets/* /assets/:splat 200
+
+# Route all page requests through SSR function
+/*        /.netlify/functions/ssr  200!

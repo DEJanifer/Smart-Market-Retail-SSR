@@ -1,4 +1,10 @@
-# Serve static assets directly
+# Serve all static assets directly (including sized images)
+# Handle all image variations (_small, _medium, _large)
+/*_small.webp    /*_small.webp    200
+/*_medium.webp   /*_medium.webp   200
+/*_large.webp    /*_large.webp    200
+
+# Handle other static files
 /Logo*    /Logo*    200
 /*.js     /*.js     200
 /*.css    /*.css    200
@@ -9,9 +15,10 @@
 /*.ico    /*.ico    200
 /*.woff2  /*.woff2  200
 /*.woff   /*.woff   200
+/*.pdf    /*.pdf    200
 /assets/* /assets/:splat 200
 
-# Explicitly handle the homepage
+# Explicitly handle the homepage through SSR
 /         /.netlify/functions/ssr  200!
 
 # Route all other page requests through SSR function

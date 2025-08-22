@@ -4,7 +4,7 @@ slug: "carroll-county-chamber-of-commerce-membership"
 date: "August 4, 2025" 
 author: "Devin Janifer"
 summary: "Carrol County businesses, elevate your office breakroom, lobby, or communal space into a modern, convenient, and inviting space that your employees and guests will love. Learn how we replace outdated, frustrating vending machines with modern Smart Vending and Micro Market unattended retail solutions that are reliable and provide access to healthy options your employees and guests deserve."
-imageUrl: "/CC-Chamber-of-Commerce.jpg"
+imageUrl: "/blog-2-CC-Chamber-of-Commerce.jpg"
 metaTitle: "Smart Vending & Micro Markets to Local Businesses"
 metaDescription: "Smart Market Retail joins the Carroll County Chamber of Commerce, bringing AI-powered Smart Vending, Micro Markets, and Coffee Service solutions that enhance property value and tenant satisfaction."
 ---

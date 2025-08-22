@@ -1,3 +1,4 @@
+
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import path from 'path';
 import fs from 'fs';
@@ -20,15 +21,22 @@ const handler: Handler = async (event: HandlerEvent) => {
     const { appHtml, helmet, status } = render(url);
     console.log('--- React app rendered to HTML ---');
 
-    // 4. Perform the replacement using a multiline-aware regex
-    //    The 's' flag at the end is the critical fix.
-    const finalHtml = template
-      .replace('', `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`)
-      .replace(/<div id="root">.*?<\/div>/s, `<div id="root">${appHtml}</div>`);
+    // 4. Perform the replacement
+    // First replace the head content
+    let finalHtml = template.replace('<!--app-head-->', `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`);
+    
+    // Then replace the app content - using indexOf for more reliable replacement
+    const rootStart = finalHtml.indexOf('<!--app-html-->');
+    if (rootStart !== -1) {
+      finalHtml = finalHtml.substring(0, rootStart) + appHtml + finalHtml.substring(rootStart + '<!--app-html-->'.length);
+    }
 
     // 5. Add a check to confirm the replacement worked before sending
-    if (finalHtml.includes('')) {
-        console.error('--- FATAL: Replacement failed! The placeholder is still in the final HTML. ---');
+    if (finalHtml.includes('<!--app-html-->')) {
+        console.error('--- FATAL: Replacement failed! The <!--app-html--> placeholder is still in the final HTML. ---');
+        console.error('Template content around placeholder:', template.substring(template.indexOf('<!--app-html-->') - 50, template.indexOf('<!--app-html-->') + 100));
+    } else if (finalHtml.includes('<!--app-head-->')) {
+        console.error('--- FATAL: Head replacement failed! The <!--app-head--> placeholder is still in the final HTML. ---');
     } else {
         console.log('--- SUCCESS: HTML replacement was successful. ---');
     }

@@ -1,6 +1,10 @@
 # === STATIC ASSETS - SERVE DIRECTLY ===
 # These MUST come first to prevent routing through functions
 
+# Blog images - Add this section
+/blog-images/*  /blog-images/:splat  200
+/blog/*         /blog/:splat         200
+
 # Logo images
 /Logo*    /Logo:splat    200
 

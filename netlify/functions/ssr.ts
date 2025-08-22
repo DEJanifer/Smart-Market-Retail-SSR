@@ -1,4 +1,3 @@
-
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import path from 'path';
 import fs from 'fs';
@@ -7,63 +6,42 @@ const handler: Handler = async (event: HandlerEvent) => {
   const url = event.path;
 
   try {
-    // 1. Try to read the template file from different possible locations
-    let template = '';
-    const possibleTemplatePaths = [
-      path.join(__dirname, 'index.html'), // If we copied it to functions directory
-      path.join(__dirname, '../../dist/client/index.html'), // Relative to function
-      path.join(process.cwd(), 'dist/client/index.html'), // From current working directory
-    ];
-
-    let templateFound = false;
-    for (const templatePath of possibleTemplatePaths) {
-      try {
-        if (fs.existsSync(templatePath)) {
-          template = fs.readFileSync(templatePath, 'utf-8');
-          console.log(`--- Template found at: ${templatePath} ---`);
-          templateFound = true;
-          break;
-        }
-      } catch (err) {
-        // Continue to next path
-      }
-    }
-
-    if (!templateFound) {
-      // If we can't find the template file, log debugging info
-      console.error('--- Template not found. Debugging info: ---');
-      console.error('__dirname:', __dirname);
-      console.error('process.cwd():', process.cwd());
-      console.error('Files in __dirname:', fs.readdirSync(__dirname));
-      
+    // 1. Read the template file
+    const templatePath = path.join(__dirname, '../../dist/client/index.html');
+    
+    if (!fs.existsSync(templatePath)) {
+      console.error('--- Template not found at:', templatePath);
+      console.error('--- Current directory:', __dirname);
+      console.error('--- Files in dist/client:', fs.existsSync(path.join(__dirname, '../../dist/client')) ? fs.readdirSync(path.join(__dirname, '../../dist/client')) : 'Directory not found');
       throw new Error('Template index.html not found');
     }
+    
+    const template = fs.readFileSync(templatePath, 'utf-8');
+    console.log('--- Template found and loaded ---');
 
-    // 2. Import the server render function
-    let render;
-    const possibleServerPaths = [
-      path.join(__dirname, '../../dist/server/entry-server.js'),
-      path.join(process.cwd(), 'dist/server/entry-server.js'),
-    ];
-
-    for (const serverPath of possibleServerPaths) {
-      try {
-        if (fs.existsSync(serverPath)) {
-          const module = await import(serverPath);
-          render = module.render;
-          console.log(`--- Server module found at: ${serverPath} ---`);
-          break;
-        }
-      } catch (err) {
-        // Continue to next path
-      }
-    }
-
-    if (!render) {
-      console.error('--- Server module not found. Debugging info: ---');
-      console.error('Searched paths:', possibleServerPaths);
+    // 2. Load the server render function (CommonJS require instead of dynamic import)
+    const serverPath = path.join(__dirname, '../../dist/server/entry-server.js');
+    
+    if (!fs.existsSync(serverPath)) {
+      console.error('--- Server module not found at:', serverPath);
+      console.error('--- Files in dist/server:', fs.existsSync(path.join(__dirname, '../../dist/server')) ? fs.readdirSync(path.join(__dirname, '../../dist/server')) : 'Directory not found');
       throw new Error('Server render module not found');
     }
+    
+    console.log('--- Loading server module from:', serverPath);
+    
+    // Use require for CommonJS modules
+    delete require.cache[serverPath]; // Clear cache to ensure fresh module
+    const serverModule = require(serverPath);
+    const render = serverModule.render || serverModule.default?.render;
+    
+    if (!render) {
+      console.error('--- Server module loaded but render function not found');
+      console.error('--- Module exports:', Object.keys(serverModule));
+      throw new Error('Render function not found in server module');
+    }
+    
+    console.log('--- Server module loaded successfully ---');
 
     // 3. Render the React app
     const { appHtml, helmet, status } = render(url);
@@ -73,29 +51,28 @@ const handler: Handler = async (event: HandlerEvent) => {
     let finalHtml = template;
     
     // Replace head content
-    if (finalHtml.includes('<!--app-head-->')) {
-      finalHtml = finalHtml.replace('<!--app-head-->', 
-        `${helmet.title}${helmet.meta}${helmet.link}${helmet.script}`);
+    if (helmet) {
+      const headContent = `${helmet.title || ''}${helmet.meta || ''}${helmet.link || ''}${helmet.script || ''}`;
+      finalHtml = finalHtml.replace('<!--app-head-->', headContent);
     }
     
     // Replace body content
-    if (finalHtml.includes('<!--app-html-->')) {
-      finalHtml = finalHtml.replace('<!--app-html-->', appHtml);
-    }
+    finalHtml = finalHtml.replace('<!--app-html-->', appHtml || '');
 
     // 5. Verify replacements worked
-    if (finalHtml.includes('<!--app-html-->') || finalHtml.includes('<!--app-head-->')) {
-      console.error('--- WARNING: Some placeholders were not replaced ---');
-      console.error('Still has <!--app-html-->:', finalHtml.includes('<!--app-html-->'));
-      console.error('Still has <!--app-head-->:', finalHtml.includes('<!--app-head-->'));
-    } else {
-      console.log('--- SUCCESS: All placeholders replaced ---');
+    if (finalHtml.includes('<!--app-html-->')) {
+      console.warn('--- WARNING: <!--app-html--> placeholder was not replaced ---');
     }
+    if (finalHtml.includes('<!--app-head-->')) {
+      console.warn('--- WARNING: <!--app-head--> placeholder was not replaced ---');
+    }
+    
+    console.log('--- SSR completed successfully ---');
 
     return {
       statusCode: status || 200,
       headers: { 
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
         'Cache-Control': 'public, max-age=0, must-revalidate'
       },
       body: finalHtml,
@@ -120,6 +97,7 @@ const handler: Handler = async (event: HandlerEvent) => {
             <h1>500 - Server Error</h1>
             <p>Sorry, something went wrong while loading this page.</p>
             <p>Error: ${error.message}</p>
+            <p>Please try refreshing the page.</p>
           </body>
         </html>
       `,

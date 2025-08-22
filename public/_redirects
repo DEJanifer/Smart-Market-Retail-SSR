@@ -1,25 +1,40 @@
-# Serve all static assets directly (including sized images)
-# Handle all image variations (_small, _medium, _large)
-/*_small.webp    /*_small.webp    200
-/*_medium.webp   /*_medium.webp   200
-/*_large.webp    /*_large.webp    200
+# DO NOT route images through functions - serve them directly
+# This MUST come before the catch-all rule
 
-# Handle other static files
-/Logo*    /Logo*    200
-/*.js     /*.js     200
-/*.css    /*.css    200
-/*.webp   /*.webp   200
-/*.jpg    /*.jpg    200
-/*.png    /*.png    200
-/*.svg    /*.svg    200
-/*.ico    /*.ico    200
-/*.woff2  /*.woff2  200
-/*.woff   /*.woff   200
-/*.pdf    /*.pdf    200
-/assets/* /assets/:splat 200
+# Handle all WebP images with size suffixes
+*.webp    /:splat.webp    200
+*_small.webp    /:splat_small.webp    200
+*_medium.webp   /:splat_medium.webp   200
+*_large.webp    /:splat_large.webp    200
 
-# Explicitly handle the homepage through SSR
-/         /.netlify/functions/ssr  200!
+# Handle all other image formats
+*.jpg     /:splat.jpg     200
+*.jpeg    /:splat.jpeg    200
+*.png     /:splat.png     200
+*.svg     /:splat.svg     200
+*.gif     /:splat.gif     200
+*.ico     /:splat.ico     200
 
-# Route all other page requests through SSR function
-/*        /.netlify/functions/ssr  200!
+# Handle fonts
+*.woff    /:splat.woff    200
+*.woff2   /:splat.woff2   200
+*.ttf     /:splat.ttf     200
+*.eot     /:splat.eot     200
+
+# Handle other static assets
+*.js      /:splat.js      200
+*.css     /:splat.css     200
+*.pdf     /:splat.pdf     200
+*.json    /:splat.json    200
+*.xml     /:splat.xml     200
+*.txt     /:splat.txt     200
+
+# Handle assets folder
+/assets/*    /assets/:splat    200
+
+# Now handle page routes through SSR
+# Homepage
+/    /.netlify/functions/ssr    200!
+
+# All other routes (but NOT files with extensions)
+/*    /.netlify/functions/ssr    200!

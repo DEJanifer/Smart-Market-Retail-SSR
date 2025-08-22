@@ -13,6 +13,22 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
+  publicDir: 'public',
+  build: {
+    copyPublicDir: true,
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          // Keep original names for images in public folder
+          if (/\.(gif|jpe?g|png|svg|webp)$/i.test(assetInfo.name ?? '')) {
+            return '[name][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

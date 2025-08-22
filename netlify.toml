@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && cp public/_redirects dist/client/_redirects"
+  command = "npm run build && cp -r public/* dist/client/ && cp public/_redirects dist/client/_redirects"
   publish = "dist/client"
 
 [functions]

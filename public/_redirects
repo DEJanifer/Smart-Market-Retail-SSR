@@ -1,9 +1,10 @@
 # === STATIC ASSETS - SERVE DIRECTLY ===
 # These MUST come first to prevent routing through functions
 
-# Blog images - Add this section
-/blog-images/*  /blog-images/:splat  200
-/blog/*         /blog/:splat         200
+# Blog images with different patterns
+/blog-*   /blog-:splat   200
+/blog_*   /blog_:splat   200
+/blog*    /blog:splat    200
 
 # Logo images
 /Logo*    /Logo:splat    200
@@ -37,28 +38,28 @@
 /Eldersburg* /Eldersburg:splat 200
 /Manchester* /Manchester:splat 200
 
-# Catch-all for any other images
-/*.webp   /:splat.webp   200
-/*.jpg    /:splat.jpg    200
-/*.jpeg   /:splat.jpeg   200
-/*.png    /:splat.png    200
-/*.svg    /:splat.svg    200
-/*.gif    /:splat.gif    200
-/*.ico    /:splat.ico    200
+# Catch-all for any other images - IMPORTANT
+*.webp    /:splat.webp   200
+*.jpg     /:splat.jpg    200
+*.jpeg    /:splat.jpeg   200
+*.png     /:splat.png    200
+*.svg     /:splat.svg    200
+*.gif     /:splat.gif    200
+*.ico     /:splat.ico    200
 
 # Font files
-/*.woff   /:splat.woff   200
-/*.woff2  /:splat.woff2  200
-/*.ttf    /:splat.ttf    200
-/*.eot    /:splat.eot    200
+*.woff    /:splat.woff   200
+*.woff2   /:splat.woff2  200
+*.ttf     /:splat.ttf    200
+*.eot     /:splat.eot    200
 
 # Other static files
-/*.pdf    /:splat.pdf    200
-/*.json   /:splat.json   200
-/*.xml    /:splat.xml    200
-/*.txt    /:splat.txt    200
-/*.css    /:splat.css    200
-/*.js     /:splat.js     200
+*.pdf     /:splat.pdf    200
+*.json    /:splat.json   200
+*.xml     /:splat.xml    200
+*.txt     /:splat.txt    200
+*.css     /:splat.css    200
+*.js      /:splat.js     200
 
 # Assets folder
 /assets/* /assets/:splat  200

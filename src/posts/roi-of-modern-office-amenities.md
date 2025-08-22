@@ -4,7 +4,7 @@ slug: "roi-of-modern-office-amenities"
 date: "August 20, 2025"
 author: "Devin Janifer"
 summary: "Boost employee productivity and improve employee retention with a strategic breakroom upgrade. This guide provides a framework for calculating the true ROI of modern office amenities, proving how they strengthen your company culture and your bottom line."
-imageUrl: "/gratuitous_micromarket2.webp"
+imageUrl: "/gratuitous-micromarket2.webp"
 metaTitle: "The ROI of a Breakroom Upgrade"
 metaDescription: "Calculate the true ROI of a breakroom upgrade. Learn how modern office amenities boost employee productivity and retention, all while enhancing your company culture at no cost."
 ---

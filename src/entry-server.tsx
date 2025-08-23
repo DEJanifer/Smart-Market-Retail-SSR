@@ -1,72 +1,79 @@
-
-import { renderToString } from 'react-dom/server';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
-import { matchRoutes } from 'react-router-dom';
 import App from './App';
 
-// Define the route configuration for 404 detection
-const routes = [
-  { path: '/' },
-  { path: '/about' },
-  { path: '/solutions' },
-  { path: '/solutions/micro-markets' },
-  { path: '/solutions/smart-vending' },
-  { path: '/solutions/smart-coolers' },
-  { path: '/solutions/smart-store' },
-  { path: '/locations' },
-  { path: '/service-area' },
-  { path: '/service-area/:townName' },
-  { path: '/contact' },
-  { path: '/blog' },
-  { path: '/blog/:postId' },
-  { path: '/locations/:locationSlug' },
-];
-
-export interface RenderResult {
+interface RenderResult {
   appHtml: string;
   helmet: {
-    title: string;
-    meta: string;
-    link: string;
-    script: string;
+    title?: string;
+    meta?: string;
+    link?: string;
+    script?: string;
   };
-  status: number;
+  status?: number;
 }
 
 export function render(url: string): RenderResult {
-  // Create a helmet context to collect head tags
-  const helmetContext = {};
+  // Create a helmet context to capture the tags
+  const helmetContext: any = {};
   
-  // Check if the URL matches any of our defined routes
-  const matches = matchRoutes(routes, url);
-  const status = matches ? 200 : 404;
+  try {
+    const appHtml = ReactDOMServer.renderToString(
+      <React.StrictMode>
+        <HelmetProvider context={helmetContext}>
+          <StaticRouter location={url}>
+            <App />
+          </StaticRouter>
+        </HelmetProvider>
+      </React.StrictMode>
+    );
 
-  // Render the app with StaticRouter for SSR
-  const appHtml = renderToString(
-    <HelmetProvider context={helmetContext}>
-      <StaticRouter location={url}>
-        <App />
-      </StaticRouter>
-    </HelmetProvider>
-  );
+    // Extract helmet data after rendering
+    const { helmet } = helmetContext;
+    
+    // Ensure we have all the necessary helmet components
+    const helmetData = {
+      title: helmet?.title?.toString() || '',
+      meta: helmet?.meta?.toString() || '',
+      link: helmet?.link?.toString() || '',
+      script: helmet?.script?.toString() || '',
+    };
 
-  // Extract helmet data from context
-  const helmet = (helmetContext as any).helmet || {
-    title: { toString: () => '' },
-    meta: { toString: () => '' },
-    link: { toString: () => '' },
-    script: { toString: () => '' },
-  };
+    console.log('SSR Helmet Data:', {
+      hasTitle: !!helmetData.title,
+      hasMeta: !!helmetData.meta,
+      metaContent: helmetData.meta?.substring(0, 200) // Log first 200 chars for debugging
+    });
 
-  return {
-    appHtml: `<div data-server-rendered="true">${appHtml}</div>`,
-    helmet: {
-      title: helmet.title.toString(),
-      meta: helmet.meta.toString(),
-      link: helmet.link.toString(),
-      script: helmet.script.toString(),
-    },
-    status,
-  };
+    return {
+      appHtml,
+      helmet: helmetData,
+      status: 200
+    };
+  } catch (error) {
+    console.error('SSR Render Error:', error);
+    
+    // Return a fallback with basic meta tags
+    return {
+      appHtml: '<div>Error rendering page</div>',
+      helmet: {
+        title: '<title>Smart Market Retail</title>',
+        meta: `
+          <meta property="og:title" content="Smart Market Retail" />
+          <meta property="og:description" content="Modern vending solutions for Carroll & Baltimore County, MD" />
+          <meta property="og:image" content="https://smartmarketretail.com/Smart Store 700 05.1_large.webp" />
+          <meta property="og:url" content="https://smartmarketretail.com" />
+          <meta name="twitter:card" content="summary_large_image" />
+        `,
+        link: '',
+        script: ''
+      },
+      status: 500
+    };
+  }
 }
+
+// Export as default as well for CommonJS compatibility
+export default { render };

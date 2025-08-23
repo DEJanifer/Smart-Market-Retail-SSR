@@ -1,5 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import Header from './Header';
+import Footer from './Footer';
+import VisualSitemap from './VisualSitemap';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -79,7 +82,10 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         <link rel="canonical" href={currentUrl} />
       </Helmet>
       
+      <Header />
       {children}
+      <VisualSitemap />
+      <Footer />
     </>
   );
 };

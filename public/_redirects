@@ -38,7 +38,7 @@
 /Eldersburg* /Eldersburg:splat 200
 /Manchester* /Manchester:splat 200
 
-# Catch-all for any other images - IMPORTANT
+# Catch-all for any other images
 *.webp    /:splat.webp   200
 *.jpg     /:splat.jpg    200
 *.jpeg    /:splat.jpeg   200
@@ -58,12 +58,12 @@
 *.json    /:splat.json   200
 *.xml     /:splat.xml    200
 *.txt     /:splat.txt    200
-*.css     /:splat.css    200
-*.js      /:splat.js     200
 
-# Assets folder
-/assets/* /assets/:splat  200
+# CSS and JS files from build
+/assets/*  /assets/:splat  200
+*.css      /:splat.css     200
+*.js       /:splat.js      200
 
-# === ROUTES - EVERYTHING ELSE THROUGH SSR ===
-# This MUST be last
-/*        /.netlify/functions/ssr    200!
+# === IMPORTANT: ALL ROUTES THROUGH SSR ===
+# This handles ALL paths including direct access
+/*        /.netlify/functions/ssr    200

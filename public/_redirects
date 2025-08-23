@@ -20,6 +20,28 @@
 
 # Cooler images
 /Cool*    /Cool:splat    200
+# === STATIC ASSETS - SERVE DIRECTLY ===
+# These MUST come first to prevent routing through functions
+
+# Blog images with different patterns
+/blog-*   /blog-:splat   200
+/blog_*   /blog_:splat   200
+/blog*    /blog:splat    200
+
+# Logo images
+/Logo*    /Logo:splat    200
+
+# Smart Store images
+/Smart*   /Smart:splat   200
+
+# Micro Market images
+/Large*   /Large:splat   200
+/Medium*  /Medium:splat  200
+/Small*   /Small:splat   200
+/Starter* /Starter:splat 200
+
+# Cooler images
+/Cool*    /Cool:splat    200
 
 # Vending images
 /Merchant* /Merchant:splat 200
@@ -64,10 +86,10 @@
 *.css      /:splat.css     200
 *.js       /:splat.js      200
 
-# Blog routes specifically
+# === BLOG ROUTES - EXPLICITLY HANDLE ===
 /blog              /.netlify/functions/ssr    200
 /blog/*            /.netlify/functions/ssr    200
 
-# === IMPORTANT: ALL ROUTES THROUGH SSR ===
-# This handles ALL paths including direct access
-/*        /.netlify/functions/ssr    200
+# === ALL OTHER ROUTES THROUGH SSR ===
+# This handles ALL other paths including direct access
+/*                 /.netlify/functions/ssr    200

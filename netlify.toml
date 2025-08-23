@@ -1,8 +1,18 @@
 [build]
-  command = "npm run build && echo '=== Listing all blog images in public ===' && ls -la public/blog*.webp 2>/dev/null || echo 'No blog images found' && echo '=== Copying all files ===' && cp -r public/* dist/client/ && echo '=== Verifying blog images in dist/client ===' && ls -la dist/client/blog*.webp 2>/dev/null || echo 'Blog images not in dist' && echo '=== All files in dist/client ===' && ls -la dist/client/ && echo 'Build complete!'"
+  command = "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Build complete!'"
   publish = "dist/client"
 
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
   included_files = ["dist/**"]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

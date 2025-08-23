@@ -64,6 +64,10 @@
 *.css      /:splat.css     200
 *.js       /:splat.js      200
 
+# Blog routes specifically
+/blog              /.netlify/functions/ssr    200
+/blog/*            /.netlify/functions/ssr    200
+
 # === IMPORTANT: ALL ROUTES THROUGH SSR ===
 # This handles ALL paths including direct access
 /*        /.netlify/functions/ssr    200

@@ -486,9 +486,9 @@ export const baltimoreCountyTowns: Town[] = [
     image: { url: '/Reisterstown Aerial_medium.webp', alt: 'A view of Main Street in Reisterstown, Maryland.' },
     zipCodes: ['21136'],
     landmarks: [
-      'Historic Main Street Reisterstown', 
-      'Franklin High School', 
+      'Historic Main Street Reisterstown',  
       'Hannah More Park',
+      'The Forbush School Trails',
       'Sheppard Pratt School'
     ],
     hyperlocalIntro: "Reisterstown's active Main Street Streetscape Action Plan and historic preservation initiatives create opportunities for modern vending solutions that complement ongoing revitalization efforts.",

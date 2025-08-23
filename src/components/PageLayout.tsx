@@ -71,7 +71,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, description, k
                 <meta property="og:description" content={description} />
                 {ogImage && <meta property="og:image" content={ogImage} />}
                 {ogType && <meta property="og:type" content={ogType} />}
-                <meta property="og:url" content={window.location.href} />
+                <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
                 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />

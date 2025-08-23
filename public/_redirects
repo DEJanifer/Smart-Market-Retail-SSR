@@ -1,32 +1,12 @@
 # === STATIC ASSETS - SERVE DIRECTLY ===
 # These MUST come first to prevent routing through functions
 
-# Blog images with different patterns
-/blog-*   /blog-:splat   200
-/blog_*   /blog_:splat   200
-/blog*    /blog:splat    200
-
-# Logo images
-/Logo*    /Logo:splat    200
-
-# Smart Store images
-/Smart*   /Smart:splat   200
-
-# Micro Market images
-/Large*   /Large:splat   200
-/Medium*  /Medium:splat  200
-/Small*   /Small:splat   200
-/Starter* /Starter:splat 200
-
-# Cooler images
-/Cool*    /Cool:splat    200
-# === STATIC ASSETS - SERVE DIRECTLY ===
-# These MUST come first to prevent routing through functions
+# Vite/build assets (hashed files)
+/assets/*  /assets/:splat  200
 
 # Blog images with different patterns
 /blog-*   /blog-:splat   200
 /blog_*   /blog_:splat   200
-/blog*    /blog:splat    200
 
 # Logo images
 /Logo*    /Logo:splat    200
@@ -60,7 +40,7 @@
 /Eldersburg* /Eldersburg:splat 200
 /Manchester* /Manchester:splat 200
 
-# Catch-all for any other images
+# Static file extensions
 *.webp    /:splat.webp   200
 *.jpg     /:splat.jpg    200
 *.jpeg    /:splat.jpeg   200
@@ -80,16 +60,9 @@
 *.json    /:splat.json   200
 *.xml     /:splat.xml    200
 *.txt     /:splat.txt    200
+*.css     /:splat.css    200
+*.js      /:splat.js     200
 
-# CSS and JS files from build
-/assets/*  /assets/:splat  200
-*.css      /:splat.css     200
-*.js       /:splat.js      200
-
-# === BLOG ROUTES - EXPLICITLY HANDLE ===
-/blog              /.netlify/functions/ssr    200
-/blog/*            /.netlify/functions/ssr    200
-
-# === ALL OTHER ROUTES THROUGH SSR ===
-# This handles ALL other paths including direct access
-/*                 /.netlify/functions/ssr    200
+# === ALL ROUTES THROUGH SSR ===
+# This MUST come last - handles all non-static routes including /blog
+/*        /.netlify/functions/ssr    200

@@ -85,7 +85,9 @@ const BlogPostPage: React.FC = () => {
               Back to Blog
             </Link>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-mint mb-4">{post.title}</h1>
+            <h1 className="text-4xl md:text-4xl font-bold text-mint mb-4">{post.title}</h1>
+            
+            <p className="text-lavender/80 border-l-4 border-coral pl-4 italic my-6">{post.metaDescription}</p>
             
             <div className="flex items-center space-x-4 text-peach mb-4">
               <div className="flex items-center">
@@ -98,7 +100,7 @@ const BlogPostPage: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-peach border-l-4 border-coral pl-4 italic my-6">{post.metaDescription}</p>
+            <img src={post.imageUrl} alt={post.title} className="rounded-lg mb-8 w-full h-auto object-cover" />
 
             <div className="flex items-center space-x-4 mb-8">
                 <span className="font-semibold flex items-center"><Share2 className="mr-2 h-5 w-5"/>Share this post</span>
@@ -114,8 +116,6 @@ const BlogPostPage: React.FC = () => {
                 </button>
             </div>
             
-            <img src={post.imageUrl} alt={post.title} className="rounded-lg mb-8 w-full h-auto object-cover" />
-
             <div 
               className="prose prose-invert lg:prose-xl max-w-none text-lavender/80 space-y-4 blog-post-content"
               dangerouslySetInnerHTML={{ __html: post.content }} 

@@ -6,7 +6,7 @@ author: "Devin Janifer"
 summary: "Property owners in Westminster and Carroll County - Stop letting an outdated vending machine hurt your tenant satisfaction. This guide shows how Smart Market Retail's AI-powered smart vending solutions reduce hassles and provide a modern amenity that makes your property stand out."
 imageUrl: "/Smart Store 700 20.1_medium.webp"
 metaTitle: "Boost Your Property's Value with AI Powered Smart Vending"
-metaDescription: "Upgrade your property with AI powered smart vending solutions. Learn how a modern machine can boost tenant satisfaction, enhance property image, and reduce maintenance hassles for you."
+metaDescription: "Learn how a modern AI powered smart vending solution can boost tenant satisfaction, enhance property image, and reduce maintenance hassles for you."
 ---
 
 ### <span class="text-mint">The Hidden Costs of an</span> <span class="text-coral">Outdated Vending Machine</span>

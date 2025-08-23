@@ -6,7 +6,7 @@ author: 'Devin Janifer'
 summary: 'Boost employee satisfaction and transform your company culture by upgrading to a Micro Market, the ultimate modern breakroom solution. This guide reveals the five warning signs that your current office amenities are failing and shows how unattended retail technology can solve them' 
 imageUrl: '/blog-4-dimmly-lit-break-room.webp' 
 metaTitle: 'Upgrade Your Breakroom with a Micro Market | Smart Market Retail Blog'
-metaDescription: "Is your breakroom hurting morale? Learn the 5 signs you need a Micro Market upgrade. Boost employee satisfaction and transform your company culture with modern breakroom solutions."
+metaDescription: "Boost employee satisfaction and transform your company culture with modern breakroom solutions. The 5 signs that tell you to upgrade to a Micro Market."
 ---
 
 ### <span class="text-mint">The Most Important Room</span> <span class="text-coral">You're Ignoring</span>

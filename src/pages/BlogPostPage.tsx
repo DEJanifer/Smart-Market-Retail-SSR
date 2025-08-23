@@ -74,6 +74,8 @@ const BlogPostPage: React.FC = () => {
     <PageLayout
       title={post.metaTitle}
       description={post.metaDescription}
+      ogImage={post.imageUrl}  
+      ogType="article"
     >
       <div className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 bg-navy/40">

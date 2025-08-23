@@ -48,9 +48,11 @@ interface PageLayoutProps {
   title: string;
   description: string;
   keywords?: string;
+  ogImage?: string;  
+  ogType?: string;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children, title, description, keywords }) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ children, title, description, keywords, ogImage, ogType }) => {
   const { organizationSchema, localBusinessSchema } = generateSchemaMarkup();
 
   return (
@@ -61,15 +63,29 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, description, k
 
         <div className="relative z-10 flex flex-col flex-grow">
             <Helmet>
-              <title>{title}</title>
-              <meta name="description" content={description} />
-              {keywords && <meta name="keywords" content={keywords} />}
-              <script type="application/ld+json">
-                {JSON.stringify(organizationSchema)}
-              </script>
-              <script type="application/ld+json">
-                {JSON.stringify(localBusinessSchema)}
-              </script>
+                <title>{title}</title>
+                <meta name="description" content={description} />
+  
+                {/* Add Open Graph tags */}
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
+                {ogImage && <meta property="og:image" content={ogImage} />}
+                {ogType && <meta property="og:type" content={ogType} />}
+                <meta property="og:url" content={window.location.href} />
+                
+                {/* Twitter Card tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+                {ogImage && <meta name="twitter:image" content={ogImage} />}
+                
+                {keywords && <meta name="keywords" content={keywords} />}
+                <script type="application/ld+json">
+                  {JSON.stringify(organizationSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(localBusinessSchema)}
+                </script>
             </Helmet>
             
             {/* The Header is fixed with a z-index of 50 */}

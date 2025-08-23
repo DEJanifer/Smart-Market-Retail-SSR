@@ -82,7 +82,7 @@ const BlogPostPage: React.FC = () => {
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-4xl font-bold text-mint mb-4">{post.title}</h1>
             
-            <p className="text-lavender/80 border-l-4 border-coral pl-4 italic my-6">{post.metaDescription}</p>
+            <p className="text-lavender/80 border-l-4 border-coral pl-2 italic my-4">{post.metaDescription}</p>
             
             <div className="flex items-center space-x-4 text-peach mb-4">
               <div className="flex items-center">

@@ -82,9 +82,30 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         <link rel="canonical" href={currentUrl} />
       </Helmet>
       
+      {/* The Header is fixed with a z-index of 50 */}
       <Header />
-      {children}
-      <VisualSitemap />
+      
+      {/* This new grid creates three columns: a left gutter, a centered content area, and a right gutter. */}
+      <div className="w-full flex-grow grid grid-cols-1 xl:grid-cols-[1fr,minmax(0,1280px),1fr]">
+        
+        {/* Left Gutter Column: This holds the sitemap */}
+        <aside className="hidden xl:block justify-self-end py-8 pr-8">
+          {/* The 'top' value has been adjusted to 'top-28' to perfectly align with the main content's top padding.
+              This accounts for the header height plus the content's own top padding.
+          */}
+          <div className="sticky top-48 w-64 z-40">
+            <VisualSitemap />
+          </div>
+        </aside>
+
+        {/* Main Content Column: This remains perfectly centered. */}
+        <main className="py-8 px-4 md:px-6 col-span-1 xl:col-start-2">
+          {children}
+        </main>
+
+        {/* Right Gutter Column: This is empty, ensuring the main content stays centered. */}
+        <div className="hidden xl:block"></div>
+      </div>
       <Footer />
     </>
   );

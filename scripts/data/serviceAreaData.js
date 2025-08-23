@@ -17,32 +17,36 @@ export const carrollCountyTowns = [
         zipCodes: ['21157', '21158'],
         landmarks: [
             'McDaniel College',
-            'Carroll County Government Offices',
-            'Downtown Westminster Business District',
-            'Carroll Hospital Center',
-            'TownMall of Westminster'
+            'Wakefield Valley Park',
+            'TownMall of Westminster',
+            'Carroll County Farm Museum',
+            'Carroll County Arts Council',
+            'Carroll County Regional Airport',
+            'Westminster National Golf Course',
+            'Carroll County Agriculture Center',
+            'Downtown Westminster Business District'
         ],
         hyperlocalIntro: "Westminster, as Carroll County's vibrant hub, offers unique opportunities for modern workplace convenience through our cutting-edge vending solutions.",
         solutionScenarios: [
             {
                 title: "College Campus Solution",
                 description: "Smart Stores in McDaniel College residence halls and student centers provide 24/7 access to healthy snacks and beverages for busy students.",
-                imageUrl: "/Smart Store 600 05.1_medium.webp"
+                imageUrl: "/Smart Store 700 10.1_medium.webp"
             },
             {
-                title: "Corporate Office Enhancement",
-                description: "Micro Markets in downtown business districts offer fresh meals and premium coffee to fuel productivity in professional environments.",
+                title: "Conveniece for Manufacturers",
+                description: "Micro Markets in Knorr Brake Company, Strouse, and FR Conversions can offer fresh meals and premium coffee to fuel productivity in professional environments conveniently consite.",
                 imageUrl: "/Large Micro Market 15.1_medium.webp"
             },
             {
                 title: "Healthcare Facility Support",
-                description: "Traditional vending machines at Carroll Hospital Center provide essential refreshments for staff, patients, and visitors around the clock.",
-                imageUrl: "/BevMax Media 2_medium.webp"
+                description: "Micro Markets and Smart Coolers at Carroll Hospital Center can provide essential refreshments and meals for staff, patients, and visitors around the clock.",
+                imageUrl: "/Small Micro Market 06.1_medium.webp"
             }
         ],
         localInsights: {
             title: "Westminster Business Climate",
-            content: "With Carroll Hospital Center employing 1,000+ staff, Carroll County government as a major employer base, and ongoing TownMall redevelopment creating new opportunities, Westminster's diverse economy demands workplace amenities that boost satisfaction and retention across healthcare, government, and retail sectors."
+            content: "With Carroll Hospital Center employing 1,000+ staff, Carroll County government as a major employer base, large scale manufactering facilities just off of Airport Drive & Magna Way, destination Car Dealerships, and renowuned higher education institutions like McDaniel College & Carroll Community College, drive Westminster's diverse economy and demands workplace amenities that boost employee satisfaction and retention across all sectors."
         },
         geoCoordinates: {
             latitude: 39.575187,
@@ -65,22 +69,22 @@ export const carrollCountyTowns = [
             alt: 'Taneytown City Hall in Taneytown, Maryland.'
         },
         zipCodes: ['21787'],
-        landmarks: ['Downtown Taneytown', 'Taneytown Memorial Park'],
+        landmarks: ['Downtown Taneytown', 'Antrim 1844', 'Taneytown Memorial Park'],
         hyperlocalIntro: "Taneytown's transformation into an emerging manufacturing center, highlighted by EVAPCO's major headquarters expansion, demands forward-looking vending solutions that support industrial workforce growth.",
         solutionScenarios: [
             {
                 title: "Manufacturing Support",
-                description: "Smart Coolers in local manufacturing facilities provide shift workers with refreshing beverages and energy-boosting snacks.",
+                description: "Micro Markets at EVAPCO, Inc. and Flowserve Corporation can provide employees with hearty meals, energy boosting drinks, and cravable snacks 24/7.",
+                imageUrl: "/Large Micro Market 10.1_medium.webp"
+            },
+            {
+                title: "Car Dealership Customers",
+                description: "Sophisticated Smart Stores at Wantz Chevrolet & Crouse Ford can offer customers and employees with delicious meals, indulgent snacks, and premium drinks while they wait.",
                 imageUrl: "/Smart Store 600 & Cafection Emblem_medium.webp"
             },
             {
-                title: "Municipal Building Service",
-                description: "Traditional vending machines in town offices offer convenient refreshments for staff and visiting residents.",
-                imageUrl: "/BevMax Media 2_medium.webp"
-            },
-            {
-                title: "Community Event Support",
-                description: "Mobile vending solutions for Taneytown's Memorial Park events and community gatherings provide refreshments for families and visitors.",
+                title: "Assisted Living Facilities",
+                description: "Smart Stores solutions at Lorien Taneytown can offer residents and staff nutritious meals and everyday essentials they would otherwise have to leave the facility for.",
                 imageUrl: "/Starter Go Micro_medium.webp"
             }
         ],
@@ -188,7 +192,12 @@ export const carrollCountyTowns = [
         metaDescription: "Serving the growing community of Hampstead, MD with modern vending solutions for Main Street businesses, schools, and parks. Contact Smart Market Retail today.",
         image: { url: '/Main Street - Hampstead MD_medium.webp', alt: 'A view of Main Street in Hampstead, Maryland.' },
         zipCodes: ['21074'],
-        landmarks: ['Hampstead Main Street', 'Coppermine 4 Seasons', 'Piney Branch Golf Course'],
+        landmarks: [
+            'Hampstead Main Street',
+            'Coppermine 4 Seasons',
+            'Oakmont Green Golf Course',
+            'Piney Branch Golf Course'
+        ],
         hyperlocalIntro: "Hampstead's family-friendly Main Street atmosphere calls for vending solutions that serve both growing businesses and active community members.",
         solutionScenarios: [
             {
@@ -286,7 +295,7 @@ export const carrollCountyTowns = [
             {
                 title: "Health & Wellness Centers",
                 description: "Smart Stores at the Peacock Center can provide patients and attending staff members with healthy foods and refreshing beverages.",
-                imageUrl: "/Smart Store 600 10.1_medium.webp"
+                imageUrl: "/Smart Store 600 10.1_small.webp"
             }
         ],
         localInsights: {
@@ -395,7 +404,17 @@ export const baltimoreCountyTowns = [
         metaDescription: "Smart Market Retail provides high-tech Micro Markets and Smart Stores for corporate offices and business parks in Owings Mills, MD.",
         image: { url: '/Owings Mills Metro Center_medium.webp', alt: 'A corporate center in Owings Mills, Maryland.' },
         zipCodes: ['21117'],
-        landmarks: ['Owings Mills Metro Centre', 'Foundry Row', 'Stevenson University'],
+        landmarks: [
+            'Owings Mills Metro Centre',
+            'Foundry Row',
+            'T. Rowe Price',
+            'McDonogh School',
+            'Irvine Nature Center',
+            'Stevenson University',
+            'Marriott Owings Mills Metro Centre',
+            'CareFirst BlueCross BlueShield',
+            'Len Stoler Automotive Group & Heritage | MileOne Autogroup'
+        ],
         hyperlocalIntro: "Owings Mills' position as a corporate hub, enhanced by Foundry Row mixed-use development and Metro transit advantages for commuters, demands sophisticated vending solutions that meet high professional standards.",
         solutionScenarios: [
             {
@@ -436,7 +455,12 @@ export const baltimoreCountyTowns = [
         metaDescription: "From historic Main Street to modern offices, Smart Market Retail provides versatile vending services for the Reisterstown, MD community.",
         image: { url: '/Reisterstown Aerial_medium.webp', alt: 'A view of Main Street in Reisterstown, Maryland.' },
         zipCodes: ['21136'],
-        landmarks: ['Historic Main Street Reisterstown', 'Franklin High School', 'Hannah More Park'],
+        landmarks: [
+            'Historic Main Street Reisterstown',
+            'Hannah More Park',
+            'The Forbush School Trails',
+            'Sheppard Pratt School'
+        ],
         hyperlocalIntro: "Reisterstown's active Main Street Streetscape Action Plan and historic preservation initiatives create opportunities for modern vending solutions that complement ongoing revitalization efforts.",
         solutionScenarios: [
             {

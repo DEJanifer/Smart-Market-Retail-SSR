@@ -222,6 +222,8 @@ const BlogPostPage: React.FC = () => {
                   prose-code:text-mint prose-code:bg-navy/50 prose-code:px-1 prose-code:rounded
                   prose-pre:bg-navy/50 prose-pre:text-lavender/80
                   space-y-6
+                  [&_p]:text-lavender/80 [&_p]:leading-relaxed
+                  [&_li]:text-lavender/80
                   [&_a]:!text-mint [&_a:hover]:!text-coral [&_a]:transition-colors
                   [&_a]:decoration-mint [&_a:hover]:decoration-coral"
                 dangerouslySetInnerHTML={{ __html: post.content }} 

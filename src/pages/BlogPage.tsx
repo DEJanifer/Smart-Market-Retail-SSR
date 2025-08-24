@@ -32,23 +32,26 @@ const BlogPage: React.FC = () => {
       title="Smart Market Retail Blog"
       description="Stay updated with the latest news, tips, and insights on smart vending, micro markets, and workplace amenities from Smart Market Retail."
     >
-      <div className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-mint">From the Blog</h1>
-            <p className="text-lg text-lavender/80 mt-4 max-w-3xl mx-auto">
-              Insights and updates on the future of unattended retail.
-            </p>
-          </div>
+      {/* Main container with explicit width and centering - matching BlogPostPage structure */}
+      <div className="w-full max-w-none mx-auto px-4 py-8 md:py-16">
+        {/* Header section with background for visibility */}
+        <div className="bg-navy/40 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden mb-8">
+          <div className="p-6 md:p-10 lg:p-12">
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-mint mb-4">From the Blog</h1>
+              <p className="text-lg text-lavender/80 max-w-3xl mx-auto">
+                Insights and updates on the future of unattended retail.
+              </p>
+            </div>
 
-          <div className="max-w-4xl mx-auto">
+            {/* Sort controls */}
             <div className="flex justify-center mb-8">
-              <div className="flex items-center gap-2 bg-navy/30 rounded-lg p-1">
+              <div className="flex items-center gap-2 bg-navy/50 rounded-lg p-1">
                 <button
                   onClick={() => setSortOrder('newest')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
                     sortOrder === 'newest' 
-                      ? 'bg-mint text-navy' 
+                      ? 'bg-mint text-navy font-semibold' 
                       : 'text-lavender hover:text-mint'
                   }`}
                 >
@@ -59,7 +62,7 @@ const BlogPage: React.FC = () => {
                   onClick={() => setSortOrder('oldest')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
                     sortOrder === 'oldest' 
-                      ? 'bg-mint text-navy' 
+                      ? 'bg-mint text-navy font-semibold' 
                       : 'text-lavender hover:text-mint'
                   }`}
                 >
@@ -68,33 +71,50 @@ const BlogPage: React.FC = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="grid gap-8">
-              {sortedPosts.length > 0 ? sortedPosts.map((post) => (
-                <div key={post.slug} className="bg-navy/30 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center transition-transform transform hover:scale-105">
-                  <div className="md:w-1/3">
-                    <Link to={`/blog/${post.slug}`}>
-                      <img src={post.imageUrl} alt={post.title} className="w-full h-48 md:h-full object-cover"/>
-                    </Link>
-                  </div>
-                  <div className="p-6 md:w-2/3">
-                    <Link to={`/blog/${post.slug}`}>
-                      <h2 className="text-2xl font-bold text-mint hover:text-coral transition-colors mb-2">{post.title}</h2>
-                    </Link>
-                    <p className="text-sm text-peach mb-4">{post.date} by {post.author}</p>
-                    <p className="text-lavender/80 mb-4">{post.summary}</p>
-                    <Link 
-                      to={`/blog/${post.slug}`} 
-                      className="inline-flex items-center font-semibold text-coral hover:text-mint"
-                    >
-                      Read More <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </div>
+        {/* Blog posts grid */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8">
+            {sortedPosts.length > 0 ? sortedPosts.map((post) => (
+              <div key={post.slug} className="bg-navy/30 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center transition-transform transform hover:scale-[1.02]">
+                <div className="md:w-1/3 h-48 md:h-64">
+                  <Link to={`/blog/${post.slug}`} className="block h-full">
+                    <img 
+                      src={post.imageUrl} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </Link>
                 </div>
-              )) : (
-                <p className="text-center text-lavender">No blog posts found. Please ensure your markdown files are in the /src/posts/ directory and have correct frontmatter.</p>
-              )}
-            </div>
+                <div className="p-6 md:w-2/3">
+                  <Link to={`/blog/${post.slug}`}>
+                    <h2 className="text-2xl font-bold text-mint hover:text-coral transition-colors mb-2">
+                      {post.title}
+                    </h2>
+                  </Link>
+                  <p className="text-sm text-peach mb-4">
+                    {post.date} by {post.author}
+                  </p>
+                  <p className="text-lavender/80 mb-4">
+                    {post.summary}
+                  </p>
+                  <Link 
+                    to={`/blog/${post.slug}`} 
+                    className="inline-flex items-center font-semibold text-coral hover:text-mint transition-colors"
+                  >
+                    Read More <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </div>
+              </div>
+            )) : (
+              <div className="bg-navy/30 rounded-lg p-8">
+                <p className="text-center text-lavender">
+                  No blog posts found. Please ensure your markdown files are in the /src/posts/ directory and have correct frontmatter.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

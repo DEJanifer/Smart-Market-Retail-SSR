@@ -98,18 +98,10 @@ const BlogPostPage: React.FC = () => {
           <div className="p-6 md:p-10 lg:p-12">
             {/* Article container with max width for readability */}
             <article className="max-w-4xl mx-auto">
-              {/* Back button */}
-              <Link 
-                to="/blog" 
-                className="inline-flex items-center text-coral hover:text-mint transition-colors mb-8 group"
-              >
-                <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-                Back to Blog
-              </Link>
               
               {/* Article header */}
               <header className="mb-8">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-mint mb-6 leading-tight">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-mint mb-6 leading-tight">
                   {post.title}
                 </h1>
                 

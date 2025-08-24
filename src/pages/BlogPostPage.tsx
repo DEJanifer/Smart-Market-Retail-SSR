@@ -101,7 +101,7 @@ const BlogPostPage: React.FC = () => {
               
               {/* Article header */}
               <header className="mb-8">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-mint mb-6 leading-tight">
+                <h1 className="text-2xl md:text-3xl lg:text-4bold text-mint mb-6 leading-tight">
                   {post.title}
                 </h1>
                 

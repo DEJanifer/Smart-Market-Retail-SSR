@@ -72,7 +72,7 @@ const BlogPostPage: React.FC = () => {
     return (
       <PageLayout title="Loading..." description="Loading blog post.">
         <div className="min-h-screen flex items-center justify-center">
-          <p className="text-lavender text-xl">Loading blog post...</p>
+          <p className="text-lavender/80 text-xl">Loading blog post...</p>
         </div>
       </PageLayout>
     );
@@ -101,7 +101,7 @@ const BlogPostPage: React.FC = () => {
               
               {/* Article header */}
               <header className="mb-8">
-                <h1 className="text-2xl md:text-3xl lg:text-4bold text-mint mb-6 leading-tight">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-mint mb-6 leading-tight">
                   {post.title}
                 </h1>
                 
@@ -205,13 +205,14 @@ const BlogPostPage: React.FC = () => {
                 </div>
               </div>
               
-              {/* Article content */}
+              {/* Article content - Updated link styling with important flags */}
               <div 
                 className="prose prose-invert prose-lg lg:prose-xl max-w-none
                   prose-headings:text-mint prose-headings:font-bold
                   prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg
-                  prose-p:text-lavender/90 prose-p:leading-relaxed prose-p:mb-4
-                  prose-a:text-mint prose-a:no-underline hover:prose-a:text-coral prose-a:transition-colors
+                  prose-p:text-lavender/80 prose-p:leading-relaxed prose-p:mb-4
+                  prose-a:!text-mint prose-a:underline prose-a:decoration-mint 
+                  hover:prose-a:!text-coral hover:prose-a:decoration-coral prose-a:transition-colors
                   prose-strong:text-peach prose-strong:font-semibold
                   prose-em:text-peach/90
                   prose-ul:text-lavender/80 prose-li:text-lavender/80
@@ -219,8 +220,10 @@ const BlogPostPage: React.FC = () => {
                   prose-blockquote:border-l-4 prose-blockquote:border-coral prose-blockquote:pl-4
                   prose-blockquote:text-peach/80 prose-blockquote:italic
                   prose-code:text-mint prose-code:bg-navy/50 prose-code:px-1 prose-code:rounded
-                  prose-pre:bg-navy/50 prose-pre:text-lavender/90
-                  space-y-6"
+                  prose-pre:bg-navy/50 prose-pre:text-lavender/80
+                  space-y-6
+                  [&_a]:!text-mint [&_a:hover]:!text-coral [&_a]:transition-colors
+                  [&_a]:decoration-mint [&_a:hover]:decoration-coral"
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
             </article>

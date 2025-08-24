@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 import fm from 'front-matter';
-import { ArrowRight, ArrowUpDown } from 'lucide-react';
+import { ArrowRight, ArrowUpDown, User, Calendar } from 'lucide-react';
 import { BlogPost } from '../types/blog';
 
 // This uses Vite's 'import.meta.glob' to automatically find all .md files in the posts directory.
@@ -99,9 +99,19 @@ const BlogPage: React.FC = () => {
                       {post.title}
                     </h2>
                   </Link>
-                  <p className="text-sm text-peach mb-3 sm:mb-4">
-                    {post.date} by {post.author}
-                  </p>
+                
+                {/* Post metadata */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm sm:text-base text-peach">
+                  <div className="flex items-center">
+                    <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-coral" />
+                    <time dateTime={post.date}>{post.date}</time>
+                  </div>
+                  <div className="flex items-center">
+                    <User className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-coral" />
+                    <span>{post.author}</span>
+                  </div>
+                </div>
+
                   <p className="text-sm sm:text-base text-lavender/80 mb-4 leading-relaxed">
                     {post.summary}
                   </p>

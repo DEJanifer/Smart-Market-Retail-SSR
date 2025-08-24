@@ -95,7 +95,7 @@ const BlogPostPage: React.FC = () => {
         {/* Content wrapper with background - mobile optimized */}
         <div className="bg-navy/40 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl overflow-hidden mx-2 sm:mx-0">
           {/* Inner content with padding - mobile optimized */}
-          <div className="p-4 sm:p-6 md:p-10 lg:p-12">
+          <div className="p-2 sm:p-4 md:p-8 lg:p-10">
             {/* Article container with max width for readability */}
             <article className="max-w-4xl mx-auto">
               

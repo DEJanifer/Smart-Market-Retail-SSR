@@ -101,7 +101,7 @@ const BlogPage: React.FC = () => {
                   </Link>
                 
                 {/* Post metadata */}
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm sm:text-base text-peach">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm sm:text-base text-peach mb-2">
                   <div className="flex items-center">
                     <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-coral" />
                     <time dateTime={post.date}>{post.date}</time>

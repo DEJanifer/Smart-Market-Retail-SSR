@@ -91,9 +91,9 @@ const BlogPostPage: React.FC = () => {
       ogType="article"
     >
       {/* Main container - mobile-first with minimal padding on mobile */}
-      <div className="w-full max-w-none mx-auto px-0 sm:px-2 py-4 sm:py-6 md:py-14">
+      <div className="w-full max-w-none mx-auto px-2 sm:px-4 py-6 sm:py-8 md:py-16">
         {/* Content wrapper with background - mobile optimized */}
-        <div className="bg-navy/40 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl overflow-hidden mx-2 sm:mx-0">
+        <div className="bg-navy/40 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl overflow-hidden mx-0 sm:mx-0">
           {/* Inner content with padding - mobile optimized */}
           <div className="p-2 sm:p-4 md:p-8 lg:p-10">
             {/* Article container with max width for readability */}

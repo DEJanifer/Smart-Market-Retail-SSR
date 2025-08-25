@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; // You'll need to install this
+import { Helmet } from 'react-helmet-async';
 import PageLayout from '../components/PageLayout';
 import NotFoundPage from './NotFoundPage';
 import fm from 'front-matter';
@@ -35,7 +35,13 @@ const BlogPostPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [copySuccess, setCopySuccess] = useState('');
 
-  const postUrl = typeof window !== 'undefined' ? window.location.href : '';
+  // Base URL for your site
+  const baseUrl = 'https://smartmarketretail.com';
+  
+  // Construct the full URL for this post
+  const postUrl = typeof window !== 'undefined' 
+    ? window.location.href 
+    : `${baseUrl}/blog/${postSlug}`;
 
   const copyToClipboard = () => {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
@@ -82,51 +88,128 @@ const BlogPostPage: React.FC = () => {
     return <NotFoundPage />;
   }
 
-  // Get the canonical URL for this post
-  const canonicalUrl = typeof window !== 'undefined' ? window.location.href : '';
+  // Prepare meta data with proper fallbacks
+  const ogTitle = post.metaTitle || post.title || 'Smart Market Retail Blog';
+  const ogDescription = post.metaDescription || post.summary || 'Read our latest insights on vending technology and retail solutions.';
   
-  // Prepare OG data
-  const ogTitle = post.metaTitle || post.title;
-  const ogDescription = post.metaDescription || post.summary || '';
-  const ogImage = post.imageUrl;
+  // Ensure image URL is absolute
+  const getAbsoluteImageUrl = (imageUrl?: string) => {
+    if (!imageUrl) {
+      // Default image if none provided
+      return `${baseUrl}/Smart Store 700 05.1_large.webp`;
+    }
+    
+    // If it's already absolute, return as is
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    
+    // Make it absolute
+    const cleanPath = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`;
+    return `${baseUrl}${cleanPath}`;
+  };
+  
+  const ogImage = getAbsoluteImageUrl(post.imageUrl);
+  
+  // Format the date properly for Open Graph
+  const formatDateForOG = (dateStr?: string) => {
+    if (!dateStr) return new Date().toISOString();
+    try {
+      // Try to parse the date and return ISO format
+      const date = new Date(dateStr);
+      return date.toISOString();
+    } catch {
+      return new Date().toISOString();
+    }
+  };
+  
+  const publishedTime = formatDateForOG(post.date);
+  const authorName = post.author || 'Smart Market Retail Team';
 
   return (
     <>
-      {/* Open Graph and Meta Tags */}
+      {/* Critical: These Helmet tags will be picked up by SSR */}
       <Helmet>
-        {/* Basic meta tags */}
-        <title>{ogTitle}</title>
+        {/* Primary Meta Tags */}
+        <title>{ogTitle} | Smart Market Retail</title>
+        <meta name="title" content={`${ogTitle} | Smart Market Retail`} />
         <meta name="description" content={ogDescription} />
-        <link rel="canonical" href={canonicalUrl} />
+        <meta name="author" content={authorName} />
         
-        {/* Open Graph tags */}
+        {/* Canonical URL */}
+        <link rel="canonical" href={postUrl} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={postUrl} />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="article" />
-        {ogImage && <meta property="og:image" content={ogImage} />}
-        {ogImage && <meta property="og:image:alt" content={post.title} />}
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={ogTitle} />
+        <meta property="og:site_name" content="Smart Market Retail" />
+        <meta property="og:locale" content="en_US" />
         
-        {/* Article-specific OG tags */}
-        {post.date && <meta property="article:published_time" content={post.date} />}
-        {post.author && <meta property="article:author" content={post.author} />}
+        {/* Article specific Open Graph tags - CRITICAL for LinkedIn */}
+        <meta property="article:author" content={authorName} />
+        <meta property="article:published_time" content={publishedTime} />
+        <meta property="article:publisher" content="Smart Market Retail" />
+        <meta property="article:section" content="Vending Technology" />
         
-        {/* Twitter Card tags */}
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={postUrl} />
         <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={ogDescription} />
-        {ogImage && <meta name="twitter:image" content={ogImage} />}
-        {ogImage && <meta name="twitter:image:alt" content={post.title} />}
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content={ogTitle} />
         
-        {/* Additional meta tags */}
-        <meta name="robots" content="index, follow" />
-        {post.date && <meta name="publish_date" property="og:publish_date" content={post.date} />}
+        {/* Additional meta tags for better compatibility */}
+        <meta name="publish_date" content={publishedTime} />
+        <meta name="news_keywords" content="vending, smart retail, micro markets, Maryland" />
+        
+        {/* JSON-LD Structured Data - Helps with rich snippets */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": ogTitle,
+            "description": ogDescription,
+            "image": {
+              "@type": "ImageObject",
+              "url": ogImage,
+              "width": 1200,
+              "height": 630
+            },
+            "datePublished": publishedTime,
+            "dateModified": publishedTime,
+            "author": {
+              "@type": "Person",
+              "name": authorName
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Smart Market Retail",
+              "logo": {
+                "@type": "ImageObject",
+                "url": `${baseUrl}/Smart Store 700 05.1_large.webp`
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": postUrl
+            }
+          })}
+        </script>
       </Helmet>
 
+      {/* Pass the processed meta data to PageLayout for additional tags */}
       <PageLayout
-        title={post.metaTitle || post.title}
-        description={post.metaDescription || post.summary}
-        ogImage={post.imageUrl}  
+        title={`${ogTitle} | Smart Market Retail`}
+        description={ogDescription}
+        ogImage={ogImage}
         ogType="article"
       >
         {/* Main container - mobile-first with minimal padding on mobile */}
@@ -157,11 +240,11 @@ const BlogPostPage: React.FC = () => {
                   <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm sm:text-base text-peach">
                     <div className="flex items-center">
                       <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-coral" />
-                      <time dateTime={post.date}>{post.date}</time>
+                      <time dateTime={publishedTime}>{post.date}</time>
                     </div>
                     <div className="flex items-center">
                       <User className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-coral" />
-                      <span>{post.author}</span>
+                      <span>{authorName}</span>
                     </div>
                   </div>
                 </header>
@@ -208,7 +291,7 @@ const BlogPostPage: React.FC = () => {
                       </svg>
                     </a>
                     <a 
-                      href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(postUrl)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.metaDescription || post.summary || '')}`}
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1.5 sm:p-2 bg-blue-700 rounded-full hover:bg-blue-800 transition-colors"

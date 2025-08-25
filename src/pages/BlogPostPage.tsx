@@ -76,7 +76,7 @@ const BlogPostPage: React.FC = () => {
 
   if (loading) {
     return (
-      <PageLayout title="Loading..." description="Loading blog post.">
+      <PageLayout title="Loading..." description="Loading blog post." skipMetaTags={false}>
         <div className="min-h-screen flex items-center justify-center">
           <p className="text-lavender/80 text-xl">Loading blog post...</p>
         </div>
@@ -90,7 +90,7 @@ const BlogPostPage: React.FC = () => {
 
   // Prepare meta data with proper fallbacks
   const ogTitle = post.metaTitle || post.title || 'Smart Market Retail Blog';
-  const ogDescription = post.metaDescription || post.summary || 'Read our latest insights on vending technology and retail solutions.';
+  const ogDescription = post.metaDescription || post.summary || 'Experience the future of unattended retail with Smart Market Retail. Modern vending solutions with a tech-forward approach.';
   
   // Ensure image URL is absolute
   const getAbsoluteImageUrl = (imageUrl?: string) => {
@@ -128,8 +128,8 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <>
-      {/* Critical: These Helmet tags will be picked up by SSR */}
-      <Helmet>
+      {/* Critical: These Helmet tags MUST come BEFORE PageLayout */}
+      <Helmet prioritize>
         {/* Primary Meta Tags */}
         <title>{ogTitle} | Smart Market Retail</title>
         <meta name="title" content={`${ogTitle} | Smart Market Retail`} />
@@ -139,7 +139,7 @@ const BlogPostPage: React.FC = () => {
         {/* Canonical URL */}
         <link rel="canonical" href={postUrl} />
         
-        {/* Open Graph / Facebook */}
+        {/* Open Graph / Facebook - CRITICAL FOR LINKEDIN */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={postUrl} />
         <meta property="og:title" content={ogTitle} />
@@ -169,6 +169,7 @@ const BlogPostPage: React.FC = () => {
         {/* Additional meta tags for better compatibility */}
         <meta name="publish_date" content={publishedTime} />
         <meta name="news_keywords" content="vending, smart retail, micro markets, Maryland" />
+        <meta name="robots" content="index, follow" />
         
         {/* JSON-LD Structured Data - Helps with rich snippets */}
         <script type="application/ld+json">
@@ -205,13 +206,8 @@ const BlogPostPage: React.FC = () => {
         </script>
       </Helmet>
 
-      {/* Pass the processed meta data to PageLayout for additional tags */}
-      <PageLayout
-        title={`${ogTitle} | Smart Market Retail`}
-        description={ogDescription}
-        ogImage={ogImage}
-        ogType="article"
-      >
+      {/* CRITICAL: Pass skipMetaTags={true} to prevent PageLayout from overriding our meta tags */}
+      <PageLayout skipMetaTags={true}>
         {/* Main container - mobile-first with minimal padding on mobile */}
         <div className="w-full max-w-none mx-auto px-0 sm:px-0 py-8 sm:py-8 md:py-16">
           {/* Content wrapper with background - mobile optimized */}

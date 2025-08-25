@@ -1,6 +1,18 @@
-# === STATIC ASSETS - SERVE DIRECTLY ===
-# These MUST come first to prevent routing through functions
+# === DYNAMIC ROUTES - MUST COME FIRST ===
+/blog/*           /.netlify/functions/ssr    200
+/solutions/*      /.netlify/functions/ssr    200
+/locations/*      /.netlify/functions/ssr    200
+/service-area/*   /.netlify/functions/ssr    200
+/about            /.netlify/functions/ssr    200
+/contact          /.netlify/functions/ssr    200
+/faq              /.netlify/functions/ssr    200
+/solutions        /.netlify/functions/ssr    200
+/locations        /.netlify/functions/ssr    200
+/service-area     /.netlify/functions/ssr    200
+/blog             /.netlify/functions/ssr    200
+/                 /.netlify/functions/ssr    200
 
+# === STATIC ASSETS - SERVE DIRECTLY ===
 # Vite/build assets (hashed files)
 /assets/*  /assets/:splat  200
 
@@ -63,6 +75,5 @@
 *.css     /:splat.css    200
 *.js      /:splat.js     200
 
-# === ALL ROUTES THROUGH SSR ===
-# This MUST come last - handles all non-static routes including /blog
+# === CATCH-ALL - MUST BE LAST ===
 /*        /.netlify/functions/ssr    200

@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Build complete!'"
+  command = "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Checking _redirects content...' && cat dist/client/_redirects && echo 'Build complete!'"
   publish = "dist/client"
 
 [functions]
@@ -14,5 +14,20 @@
 
 [[headers]]
   for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "*.png"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

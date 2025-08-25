@@ -4,103 +4,187 @@ import fs from 'fs';
 
 const handler: Handler = async (event: HandlerEvent) => {
   const url = event.path;
+  
+  console.log('=== SSR Function START ===');
+  console.log('Processing URL:', url);
+  console.log('Current directory:', __dirname);
 
   try {
     // 1. Read the template file
     const templatePath = path.join(__dirname, '../../dist/client/index.html');
+    console.log('Looking for template at:', templatePath);
     
     if (!fs.existsSync(templatePath)) {
-      console.error('--- Template not found at:', templatePath);
-      console.error('--- Current directory:', __dirname);
-      console.error('--- Files in dist/client:', fs.existsSync(path.join(__dirname, '../../dist/client')) ? fs.readdirSync(path.join(__dirname, '../../dist/client')) : 'Directory not found');
-      throw new Error('Template index.html not found');
+      console.error('Template not found!');
+      console.error('Directory contents:', fs.readdirSync(path.join(__dirname, '../../')));
+      
+      // Return a basic fallback HTML
+      return {
+        statusCode: 200,
+        headers: { 
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-SSR-Status': 'template-missing',
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
+        },
+        body: `<!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Smart Market Retail</title>
+              <meta property="og:title" content="Smart Market Retail" />
+              <meta property="og:description" content="Modern vending solutions for Carroll & Baltimore County, MD" />
+              <meta property="og:type" content="website" />
+              <meta property="og:url" content="https://smartmarketretail.com${url}" />
+              <meta property="og:image" content="https://smartmarketretail.com/Smart Store 700 05.1_large.webp" />
+            </head>
+            <body>
+              <div id="root">Loading Smart Market Retail...</div>
+              <script>window.location.reload();</script>
+            </body>
+          </html>`
+      };
     }
     
     const template = fs.readFileSync(templatePath, 'utf-8');
-    console.log('--- Template found and loaded ---');
+    console.log('Template loaded successfully');
 
-    // 2. Load the server render function (CommonJS require instead of dynamic import)
+    // 2. Load the server render function
     const serverPath = path.join(__dirname, '../../dist/server/entry-server.js');
+    console.log('Looking for server bundle at:', serverPath);
     
     if (!fs.existsSync(serverPath)) {
-      console.error('--- Server module not found at:', serverPath);
-      console.error('--- Files in dist/server:', fs.existsSync(path.join(__dirname, '../../dist/server')) ? fs.readdirSync(path.join(__dirname, '../../dist/server')) : 'Directory not found');
-      throw new Error('Server render module not found');
+      console.error('Server bundle not found!');
+      console.error('dist/server contents:', fs.existsSync(path.join(__dirname, '../../dist/server')) ? fs.readdirSync(path.join(__dirname, '../../dist/server')) : 'Directory not found');
+      
+      // Return template with default meta tags
+      return {
+        statusCode: 200,
+        headers: { 
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-SSR-Status': 'server-bundle-missing',
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
+        },
+        body: template
+      };
     }
+
+    console.log('Server bundle found, loading...');
     
-    console.log('--- Loading server module from:', serverPath);
-    
-    // Use require for CommonJS modules
-    delete require.cache[serverPath]; // Clear cache to ensure fresh module
+    // Clear cache for fresh module
+    delete require.cache[serverPath];
     const serverModule = require(serverPath);
     const render = serverModule.render || serverModule.default?.render;
     
     if (!render) {
-      console.error('--- Server module loaded but render function not found');
-      console.error('--- Module exports:', Object.keys(serverModule));
-      throw new Error('Render function not found in server module');
+      console.error('Render function not found in server module');
+      console.error('Module exports:', Object.keys(serverModule));
+      
+      return {
+        statusCode: 200,
+        headers: { 
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-SSR-Status': 'render-function-missing',
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
+        },
+        body: template
+      };
     }
     
-    console.log('--- Server module loaded successfully ---');
+    console.log('Render function found, rendering...');
 
     // 3. Render the React app
     const { appHtml, helmet, status } = render(url);
-    console.log('--- React app rendered successfully ---');
+    console.log('React app rendered successfully');
+    console.log('Helmet data present:', !!helmet);
+    console.log('Helmet title:', helmet?.title ? 'YES' : 'NO');
+    console.log('Helmet meta:', helmet?.meta ? 'YES' : 'NO');
 
-    // 4. Replace placeholders in template
+    // 4. Build the final HTML
     let finalHtml = template;
     
-    // Replace head content
+    // Remove any existing meta tags that we'll be replacing
+    finalHtml = finalHtml.replace(/<meta name="description"[^>]*>/g, '');
+    finalHtml = finalHtml.replace(/<meta property="og:[^"]*"[^>]*>/g, '');
+    finalHtml = finalHtml.replace(/<meta name="twitter:[^"]*"[^>]*>/g, '');
+    finalHtml = finalHtml.replace(/<title>[^<]*<\/title>/g, '');
+    
+    // Add the new head content
     if (helmet) {
-      const headContent = `${helmet.title || ''}${helmet.meta || ''}${helmet.link || ''}${helmet.script || ''}`;
-      finalHtml = finalHtml.replace('<!--app-head-->', headContent);
+      const headContent = `
+        ${helmet.title || '<title>Smart Market Retail</title>'}
+        ${helmet.meta || ''}
+        ${helmet.link || ''}
+        ${helmet.script || ''}
+      `;
+      
+      // Insert right after <head> tag
+      finalHtml = finalHtml.replace('<head>', `<head>\n${headContent}`);
+      
+      // Also replace the placeholder if it exists
+      finalHtml = finalHtml.replace('<!--app-head-->', '');
     }
     
     // Replace body content
     finalHtml = finalHtml.replace('<!--app-html-->', appHtml || '');
-
-    // 5. Verify replacements worked
-    if (finalHtml.includes('<!--app-html-->')) {
-      console.warn('--- WARNING: <!--app-html--> placeholder was not replaced ---');
-    }
-    if (finalHtml.includes('<!--app-head-->')) {
-      console.warn('--- WARNING: <!--app-head--> placeholder was not replaced ---');
-    }
     
-    console.log('--- SSR completed successfully ---');
+    // Log final verification
+    const hasOGTitle = finalHtml.includes('property="og:title"');
+    const hasOGDescription = finalHtml.includes('property="og:description"');
+    console.log('Final HTML has OG title:', hasOGTitle);
+    console.log('Final HTML has OG description:', hasOGDescription);
+    
+    console.log('=== SSR Function SUCCESS ===');
 
     return {
       statusCode: status || 200,
       headers: { 
         'Content-Type': 'text/html; charset=utf-8',
+        'X-SSR-Status': 'success',
+        'X-SSR-Path': url,
+        'X-SSR-Has-Meta': `${hasOGTitle && hasOGDescription}`,
         'Cache-Control': 'public, max-age=0, must-revalidate'
       },
       body: finalHtml,
     };
     
-  } catch (error) {
-    console.error('--- SSR Function ERROR ---');
-    console.error('Error:', error.message);
-    console.error('Stack:', error.stack);
+  } catch (error: any) {
+    console.error('=== SSR Function ERROR ===');
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
     
-    // Return a basic error page
+    // Return a fallback HTML with basic meta tags
     return {
       statusCode: 500,
-      headers: { 'Content-Type': 'text/html' },
-      body: `
-        <!DOCTYPE html>
-        <html>
+      headers: { 
+        'Content-Type': 'text/html; charset=utf-8',
+        'X-SSR-Status': 'error',
+        'X-SSR-Error': error.message
+      },
+      body: `<!DOCTYPE html>
+        <html lang="en">
           <head>
-            <title>Server Error</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Smart Market Retail - Error</title>
+            <meta property="og:title" content="Smart Market Retail" />
+            <meta property="og:description" content="Modern vending solutions for Carroll & Baltimore County, MD" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://smartmarketretail.com${url}" />
+            <meta property="og:image" content="https://smartmarketretail.com/Smart Store 700 05.1_large.webp" />
           </head>
           <body>
-            <h1>500 - Server Error</h1>
-            <p>Sorry, something went wrong while loading this page.</p>
-            <p>Error: ${error.message}</p>
-            <p>Please try refreshing the page.</p>
+            <div style="text-align: center; padding: 50px;">
+              <h1>Loading Smart Market Retail...</h1>
+              <p>If this page doesn't load, please refresh.</p>
+            </div>
+            <script>
+              setTimeout(function() {
+                window.location.reload();
+              }, 2000);
+            </script>
           </body>
-        </html>
-      `,
+        </html>`
     };
   }
 };

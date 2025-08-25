@@ -7,7 +7,6 @@ import fm from 'front-matter';
 import { marked } from 'marked';
 import { BlogPost } from '../types/blog';
 import { 
-  ArrowLeft, 
   Calendar, 
   User, 
   Share2, 

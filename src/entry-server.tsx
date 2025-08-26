@@ -107,7 +107,3 @@ export function render(url: string): RenderResult {
     };
   }
 }
-
-// Export as default as well for CommonJS compatibility
-module.exports = { render };
-module.exports.default = { render };

@@ -16,7 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: 'src/entry-server.tsx',
       output: {
-        format: 'cjs',
+        format: 'es',
         entryFileNames: 'entry-server.js',
         // Bundle everything into a single file
         inlineDynamicImports: true,

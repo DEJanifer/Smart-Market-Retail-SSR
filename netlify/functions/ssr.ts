@@ -30,11 +30,11 @@ const handler: Handler = async (event) => {
   }
 
   try {
-    // Load the template - use multiple possible paths
+    // Load the template - Netlify specific paths
     const possibleTemplatePaths = [
-      path.join(__dirname, '../../dist/client/index.html'),
       path.join(process.cwd(), 'dist/client/index.html'),
-      path.join(__dirname, '../dist/client/index.html')
+      path.join(__dirname, '../../dist/client/index.html'),
+      '/var/task/dist/client/index.html'
     ];
     
     let template = '';
@@ -80,11 +80,11 @@ const handler: Handler = async (event) => {
       };
     }
 
-    // Try to load and use the server render function
+    // Try to load and use the server render function - Netlify specific paths
     const possibleServerPaths = [
-      path.join(__dirname, '../../dist/server/entry-server.js'),
       path.join(process.cwd(), 'dist/server/entry-server.js'),
-      path.join(__dirname, '../dist/server/entry-server.js')
+      '/var/task/dist/server/entry-server.js',
+      path.join(__dirname, '../../dist/server/entry-server.js')
     ];
     
     let serverModule: any = null;
@@ -95,9 +95,9 @@ const handler: Handler = async (event) => {
       if (fs.existsSync(possiblePath)) {
         serverPath = possiblePath;
         try {
-          // Use dynamic import for ES modules
-          const fileUrl = `file://${possiblePath}`;
-          serverModule = await import(fileUrl);
+          // Use require for CommonJS modules in Netlify Functions
+          delete require.cache[possiblePath]; // Clear cache to ensure fresh load
+          serverModule = require(possiblePath);
           console.log('Server bundle loaded from:', serverPath);
           break;
         } catch (e) {
@@ -119,7 +119,7 @@ const handler: Handler = async (event) => {
     }
 
     // Get the render function
-    const render = serverModule.default?.render || serverModule.render;
+    const render = serverModule.render || serverModule.default?.render;
     
     if (!render || typeof render !== 'function') {
       console.error('Render function not found in server module');

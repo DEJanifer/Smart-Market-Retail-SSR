@@ -14,19 +14,26 @@ const Home: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // This only runs on the client
     setIsClient(true);
     
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') return;
+    
     // Check for external referrer flag
-    const isExternalReferrer = sessionStorage.getItem('externalReferrer') === 'true' || 
-                               (window as any).__EXTERNAL_REFERRER__ === true;
+    const isExternalReferrer = 
+      (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('externalReferrer') === 'true') || 
+      (window as any).__EXTERNAL_REFERRER__ === true;
     
     // Check if user has visited before
-    const hasVisited = sessionStorage.getItem('hasVisited') === 'true';
+    const hasVisited = typeof sessionStorage !== 'undefined' && sessionStorage.getItem('hasVisited') === 'true';
     
     // Only show loading screen for first-time internal visitors
     if (!isExternalReferrer && !hasVisited) {
       setIsLoading(true);
-      sessionStorage.setItem('hasVisited', 'true');
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('hasVisited', 'true');
+      }
       
       const timer = setTimeout(() => {
         setIsLoading(false);
@@ -35,7 +42,9 @@ const Home: React.FC = () => {
       return () => clearTimeout(timer);
     } else {
       // Clear external referrer flag after checking
-      sessionStorage.removeItem('externalReferrer');
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.removeItem('externalReferrer');
+      }
     }
   }, []);
 
@@ -64,12 +73,12 @@ const Home: React.FC = () => {
     };
   }, [isLoading, isClient]);
 
-  // Only show loading screen if conditions are met
+  // Only show loading screen on client-side and if conditions are met
   if (isClient && isLoading) {
     return <LoadingScreen />;
   }
 
-  // Always render the page content
+  // Always render the page content for SSR
   return (
     <PageLayout
       title="SMART MARKET RETAIL - A Smarter Way to Vend | Carroll & Baltimore County MD"

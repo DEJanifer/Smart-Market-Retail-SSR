@@ -7,7 +7,16 @@ const handler: Handler = async (event: HandlerEvent) => {
   
   console.log('=== SSR Function START ===');
   console.log('Processing URL:', url);
+  console.log('Referrer:', event.headers?.referer || 'none');
+  console.log('User-Agent:', event.headers?.['user-agent'] || 'none');
   console.log('Current directory:', __dirname);
+
+  // Check if this is an external referrer
+  const referrer = event.headers?.referer || '';
+  const isExternalReferrer = referrer && 
+    !referrer.includes('smartmarketretail.com') && 
+    !referrer.includes('localhost') &&
+    !referrer.includes('127.0.0.1');
 
   try {
     // 1. Read the template file
@@ -42,6 +51,13 @@ const handler: Handler = async (event: HandlerEvent) => {
             </head>
             <body>
               <div id="root">Loading Smart Market Retail...</div>
+              <script>
+                // Prevent hydration issues on external links
+                window.__EXTERNAL_REFERRER__ = ${isExternalReferrer};
+                if (${isExternalReferrer}) {
+                  sessionStorage.setItem('hasVisited', 'true');
+                }
+              </script>
               <script>window.location.reload();</script>
             </body>
           </html>`
@@ -50,6 +66,32 @@ const handler: Handler = async (event: HandlerEvent) => {
     
     let template = fs.readFileSync(templatePath, 'utf-8');
     console.log('Template loaded successfully');
+
+    // For external referrers, return client-side rendered version to avoid hydration issues
+    if (isExternalReferrer) {
+      console.log('External referrer detected, bypassing SSR');
+      
+      // Inject a script to prevent loading screen on external links
+      template = template.replace(
+        '</body>',
+        `<script>
+          window.__EXTERNAL_REFERRER__ = true;
+          sessionStorage.setItem('hasVisited', 'true');
+        </script>
+        </body>`
+      );
+      
+      return {
+        statusCode: 200,
+        headers: { 
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-SSR-Status': 'bypassed-external',
+          'X-SSR-Referrer': referrer,
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
+        },
+        body: template
+      };
+    }
 
     // 2. Load the server render function
     const serverPath = path.join(__dirname, '../../dist/server/entry-server.js');
@@ -78,6 +120,7 @@ const handler: Handler = async (event: HandlerEvent) => {
       const headContent = `
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="/Logo - Website.png" />
         <title>${pageTitle}</title>
         <meta name="description" content="${pageDescription}">
         
@@ -98,6 +141,14 @@ const handler: Handler = async (event: HandlerEvent) => {
         <meta name="twitter:title" content="${pageTitle}" />
         <meta name="twitter:description" content="${pageDescription}" />
         <meta name="twitter:image" content="https://smartmarketretail.com/Smart Store 700 05.1_large.webp" />
+        
+        <!-- Fonts and Styles -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" crossorigin>
+        <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+        <link rel="preload" as="image" href="/Logo - Website_medium.webp" type="image/webp">
       `;
       
       // Replace everything between <head> and </head>
@@ -195,6 +246,11 @@ const handler: Handler = async (event: HandlerEvent) => {
         <meta property="og:url" content="https://smartmarketretail.com${url}" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+        <link rel="preload" as="image" href="/Logo - Website_medium.webp" type="image/webp">
       `;
       
       finalHtml = finalHtml.replace(/<head>[\s\S]*?<\/head>/, `<head>${defaultHead}</head>`);
@@ -225,6 +281,7 @@ const handler: Handler = async (event: HandlerEvent) => {
         'Content-Type': 'text/html; charset=utf-8',
         'X-SSR-Status': 'success',
         'X-SSR-Path': url,
+        'X-SSR-Referrer': referrer || 'none',
         'X-SSR-Has-Meta': `${hasOGTitle && hasOGDescription && hasOGImage}`,
         'Cache-Control': 'public, max-age=0, must-revalidate'
       },
@@ -263,6 +320,8 @@ const handler: Handler = async (event: HandlerEvent) => {
               <p>If this page doesn't load, please refresh.</p>
             </div>
             <script>
+              // Prevent loading screen on error
+              sessionStorage.setItem('hasVisited', 'true');
               setTimeout(function() {
                 window.location.reload();
               }, 2000);

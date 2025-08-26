@@ -1,5 +1,17 @@
-# Permanent redirects from old paths to new paths
-/smart-stores   /solutions/smart-store   301
-/smart-coolers  /solutions/smart-coolers 301
-/micro-markets  /solutions/micro-markets 301
-/vending        /solutions/smart-vending 301
+# public/_redirects
+
+# === STATIC ASSETS - SERVE DIRECTLY ===
+# This rule ensures that all your built assets (CSS, JS, etc.) are served as files.
+/assets/* /assets/:splat    200
+
+# === PERMANENT REDIRECTS for SEO ===
+# These redirect your old URLs to their new locations.
+/smart-stores     /solutions/smart-store     301
+/smart-coolers    /solutions/smart-coolers   301
+/micro-markets    /solutions/micro-markets   301
+/vending          /solutions/smart-vending   301
+
+# === CATCH-ALL SSR RULE - MUST BE LAST ===
+# For any request that is not a static file or a redirect,
+# render it with the server-side rendering function.
+/* /.netlify/functions/ssr    200

@@ -9,14 +9,6 @@
   node_bundler = "esbuild"
   included_files = ["dist/**"]
 
-# === THIS IS THE CRITICAL RULE THAT WAS MISSING ===
-# This tells Netlify how to handle Server-Side Rendering.
-# It MUST come before the header rules.
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/ssr"
-  status = 200 # This makes it a rewrite (correct for SSR)
-
 # === YOUR EXISTING HEADER RULES (UNCHANGED) ===
 [[headers]]
   for = "/*"

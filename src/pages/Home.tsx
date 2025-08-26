@@ -8,7 +8,6 @@ import About from '../components/About';
 import BreakroomBuilder from '../components/BreakroomBuilder';
 import Benefits from '../components/Benefits';
 import Locations from '../components/Locations';
-import ClientOnly from '../components/ClientOnly';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,16 +16,26 @@ const Home: React.FC = () => {
   useEffect(() => {
     setIsClient(true);
     
-    // Check if this is the initial page load (not navigation)
-    const isInitialLoad = !window.performance.navigation || 
-                          window.performance.navigation.type === 0;
+    // Check for external referrer flag
+    const isExternalReferrer = sessionStorage.getItem('externalReferrer') === 'true' || 
+                               (window as any).__EXTERNAL_REFERRER__ === true;
     
-    // Only show loading screen on initial load, not on navigation
-    if (isInitialLoad && !sessionStorage.getItem('hasVisited')) {
+    // Check if user has visited before
+    const hasVisited = sessionStorage.getItem('hasVisited') === 'true';
+    
+    // Only show loading screen for first-time internal visitors
+    if (!isExternalReferrer && !hasVisited) {
       setIsLoading(true);
       sessionStorage.setItem('hasVisited', 'true');
-      const timer = setTimeout(() => setIsLoading(false), 1500);
+      
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+      
       return () => clearTimeout(timer);
+    } else {
+      // Clear external referrer flag after checking
+      sessionStorage.removeItem('externalReferrer');
     }
   }, []);
 
@@ -42,7 +51,6 @@ const Home: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    // Only observe elements after loading is complete
     if (!isLoading && isClient) {
       document.querySelectorAll('.fade-in').forEach((el) => {
         observer.observe(el);
@@ -56,16 +64,12 @@ const Home: React.FC = () => {
     };
   }, [isLoading, isClient]);
 
-  // Show loading screen only on client-side and when loading
+  // Only show loading screen if conditions are met
   if (isClient && isLoading) {
-    return (
-      <ClientOnly>
-        <LoadingScreen />
-      </ClientOnly>
-    );
+    return <LoadingScreen />;
   }
 
-  // Render the page content
+  // Always render the page content
   return (
     <PageLayout
       title="SMART MARKET RETAIL - A Smarter Way to Vend | Carroll & Baltimore County MD"

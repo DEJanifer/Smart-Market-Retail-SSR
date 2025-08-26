@@ -9,16 +9,58 @@
   node_bundler = "esbuild"
   included_files = ["dist/**"]
 
-# This is the correct, standard rule for SSR on Netlify.
-# It tells Netlify to serve any static files it finds in the publish directory first,
-# and for any other request, rewrite it with the SSR function.
-# This MUST come before the header rules.
+# Serve static assets first
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+  force = true
+
+# Serve images directly
+[[redirects]]
+  from = "/*.webp"
+  to = "/:splat.webp"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*.jpg"
+  to = "/:splat.jpg"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*.png"
+  to = "/:splat.png"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*.svg"
+  to = "/:splat.svg"
+  status = 200
+  force = true
+
+# CSS and JS files
+[[redirects]]
+  from = "/*.css"
+  to = "/:splat.css"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*.js"
+  to = "/:splat.js"
+  status = 200
+  force = true
+
+# Main SSR redirect (must be last)
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/ssr"
   status = 200
 
-# Your existing header rules (unchanged)
+# Headers for caching
 [[headers]]
   for = "/*"
   [headers.values]

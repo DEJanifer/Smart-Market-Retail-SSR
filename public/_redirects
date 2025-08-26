@@ -1,0 +1,79 @@
+# === DYNAMIC ROUTES - MUST COME FIRST ===
+/blog/*           /.netlify/functions/ssr    301
+/solutions/*      /.netlify/functions/ssr    301
+/locations/*      /.netlify/functions/ssr    301
+/service-area/*   /.netlify/functions/ssr    301
+/about            /.netlify/functions/ssr    301
+/contact          /.netlify/functions/ssr    301
+/faq              /.netlify/functions/ssr    301
+/solutions        /.netlify/functions/ssr    301
+/locations        /.netlify/functions/ssr    301
+/service-area     /.netlify/functions/ssr    301
+/blog             /.netlify/functions/ssr    301
+/                 /.netlify/functions/ssr    301
+
+# === STATIC ASSETS - SERVE DIRECTLY ===
+# Vite/build assets (hashed files)
+/assets/*  /assets/:splat  301
+
+# Blog images with different patterns
+/blog-*   /blog-:splat   301
+/blog_*   /blog_:splat   301
+
+# Logo images
+/Logo*    /Logo:splat    301
+
+# Smart Store images
+/Smart*   /Smart:splat   301
+
+# Micro Market images
+/Large*   /Large:splat   301
+/Medium*  /Medium:splat  301
+/Small*   /Small:splat   301
+/Starter* /Starter:splat 301
+
+# Cooler images
+/Cool*    /Cool:splat    301
+
+# Vending images
+/Merchant* /Merchant:splat 301
+/BevMax*  /BevMax:splat  301
+
+# Location images
+/Main*    /Main:splat    301
+/Construction* /Construction:splat 301
+/McDaniel* /McDaniel:splat 301
+/Mid-rise* /Mid-rise:splat 301
+/high*    /high:splat    301
+/Taneytown* /Taneytown:splat 301
+/Old*     /Old:splat     301
+/Owings*  /Owings:splat  301
+/Reisterstown* /Reisterstown:splat 301
+/Eldersburg* /Eldersburg:splat 301
+/Manchester* /Manchester:splat 301
+
+# Static file extensions
+*.webp    /:splat.webp   301
+*.jpg     /:splat.jpg    301
+*.jpeg    /:splat.jpeg   301
+*.png     /:splat.png    301
+*.svg     /:splat.svg    301
+*.gif     /:splat.gif    301
+*.ico     /:splat.ico    301
+
+# Font files
+*.woff    /:splat.woff   301
+*.woff2   /:splat.woff2  301
+*.ttf     /:splat.ttf    301
+*.eot     /:splat.eot    301
+
+# Other static files
+*.pdf     /:splat.pdf    301
+*.json    /:splat.json   301
+*.xml     /:splat.xml    301
+*.txt     /:splat.txt    301
+*.css     /:splat.css    301
+*.js      /:splat.js     301
+
+# === CATCH-ALL - MUST BE LAST ===
+/*        /.netlify/functions/ssr    301

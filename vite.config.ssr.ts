@@ -37,6 +37,6 @@ export default defineConfig({
     external: [...builtinModules, ...builtinModules.map(m => `node:${m}`)],
     target: 'node',
     // Ensure proper module resolution for CommonJS output
-    noExternal: ['react', 'invariant', 'react-router', 'scheduler', 'front-matter', 'lucide-react', 'shallowequal', 'react-dom', 'react-fast-compare', 'react-router-dom', '@remix-run/router', 'react-helmet-async'],
+    noExternal: ['react', 'invariant', 'js-yaml', 'react-router', 'scheduler', 'front-matter', 'lucide-react', 'shallowequal', 'react-dom', 'react-fast-compare', 'react-router-dom', '@remix-run/router', 'react-helmet-async'],
   },
 })

@@ -32,8 +32,6 @@ const postsBySlug = Object.values(postModules).reduce((acc, rawContent) => {
 
 const BlogPostPage: React.FC = () => {
   const { postId: postSlug } = useParams<{ postId: string }>();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
   const [copySuccess, setCopySuccess] = useState('');
 
   // The base URL of your site, essential for generating absolute URLs for SSR.
@@ -42,6 +40,25 @@ const BlogPostPage: React.FC = () => {
   // Construct the full, absolute URL for the current post. This works on both server and client.
   const postUrl = `${baseUrl}/blog/${postSlug}`;
 
+  // Synchronously get the post data during render (works for both SSR and client-side)
+  let post: BlogPost | null = null;
+  
+  if (postSlug && postsBySlug[postSlug]) {
+    try {
+      const rawContent = postsBySlug[postSlug];
+      const { attributes, body }: { attributes: any; body: string } = fm(rawContent);
+      const htmlContent = marked.parse(body);
+      post = { ...attributes, content: htmlContent };
+    } catch (error) {
+      console.error('Error parsing blog post:', error);
+      post = null;
+    }
+  }
+
+  // If no post found, return 404 page immediately
+  if (!post) {
+    return <NotFoundPage />;
+  }
   const copyToClipboard = () => {
     // This function only runs on the client-side where navigator is available.
     navigator.clipboard.writeText(postUrl).then(() => {
@@ -53,31 +70,6 @@ const BlogPostPage: React.FC = () => {
     });
   };
 
-  useEffect(() => {
-    if (postSlug && postsBySlug[postSlug]) {
-      const rawContent = postsBySlug[postSlug];
-      const { attributes, body }: { attributes: any; body: string } = fm(rawContent);
-      const htmlContent = marked.parse(body);
-      setPost({ ...attributes, content: htmlContent });
-    } else {
-      setPost(null);
-    }
-    setLoading(false);
-  }, [postSlug]);
-
-  if (loading) {
-    return (
-      <PageLayout title="Loading..." description="Loading blog post.">
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-lavender/80 text-xl">Loading blog post...</p>
-        </div>
-      </PageLayout>
-    );
-  }
-
-  if (!post) {
-    return <NotFoundPage />;
-  }
 
   // --- Meta Tag Preparation ---
 

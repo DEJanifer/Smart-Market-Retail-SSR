@@ -1,17 +1,79 @@
-# public/_redirects
+# === DYNAMIC ROUTES - MUST COME FIRST ===
+/blog/*           /.netlify/functions/ssr    200
+/solutions/*      /.netlify/functions/ssr    200
+/locations/*      /.netlify/functions/ssr    200
+/service-area/*   /.netlify/functions/ssr    200
+/about            /.netlify/functions/ssr    200
+/contact          /.netlify/functions/ssr    200
+/faq              /.netlify/functions/ssr    200
+/solutions        /.netlify/functions/ssr    200
+/locations        /.netlify/functions/ssr    200
+/service-area     /.netlify/functions/ssr    200
+/blog             /.netlify/functions/ssr    200
+/                 /.netlify/functions/ssr    200
 
 # === STATIC ASSETS - SERVE DIRECTLY ===
-# This rule ensures that all your built assets (CSS, JS, etc.) are served as files.
-/assets/* /assets/:splat    200
+# Vite/build assets (hashed files)
+/assets/*  /assets/:splat  200
 
-# === PERMANENT REDIRECTS for SEO ===
-# These redirect your old URLs to their new locations.
-/smart-stores     /solutions/smart-store     301
-/smart-coolers    /solutions/smart-coolers   301
-/micro-markets    /solutions/micro-markets   301
-/vending          /solutions/smart-vending   301
+# Blog images with different patterns
+/blog-*   /blog-:splat   200
+/blog_*   /blog_:splat   200
 
-# === CATCH-ALL SSR RULE - MUST BE LAST ===
-# For any request that is not a static file or a redirect,
-# render it with the server-side rendering function.
-/* /.netlify/functions/ssr    200
+# Logo images
+/Logo*    /Logo:splat    200
+
+# Smart Store images
+/Smart*   /Smart:splat   200
+
+# Micro Market images
+/Large*   /Large:splat   200
+/Medium*  /Medium:splat  200
+/Small*   /Small:splat   200
+/Starter* /Starter:splat 200
+
+# Cooler images
+/Cool*    /Cool:splat    200
+
+# Vending images
+/Merchant* /Merchant:splat 200
+/BevMax*  /BevMax:splat  200
+
+# Location images
+/Main*    /Main:splat    200
+/Construction* /Construction:splat 200
+/McDaniel* /McDaniel:splat 200
+/Mid-rise* /Mid-rise:splat 200
+/high*    /high:splat    200
+/Taneytown* /Taneytown:splat 200
+/Old*     /Old:splat     200
+/Owings*  /Owings:splat  200
+/Reisterstown* /Reisterstown:splat 200
+/Eldersburg* /Eldersburg:splat 200
+/Manchester* /Manchester:splat 200
+
+# Static file extensions
+*.webp    /:splat.webp   200
+*.jpg     /:splat.jpg    200
+*.jpeg    /:splat.jpeg   200
+*.png     /:splat.png    200
+*.svg     /:splat.svg    200
+*.gif     /:splat.gif    200
+*.ico     /:splat.ico    200
+
+# Font files
+*.woff    /:splat.woff   200
+*.woff2   /:splat.woff2  200
+*.ttf     /:splat.ttf    200
+*.eot     /:splat.eot    200
+
+# Other static files
+*.pdf     /:splat.pdf    200
+*.json    /:splat.json   200
+*.xml     /:splat.xml    200
+*.txt     /:splat.txt    200
+*.css     /:splat.css    200
+*.js      /:splat.js     200
+
+# === CATCH-ALL - MUST BE LAST ===
+/*        /.netlify/functions/ssr    200

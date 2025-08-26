@@ -8,7 +8,7 @@
     "dev:ssr": "tsx server/index.ts",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --config vite.config.ssr.ts",
+    "build:server": "vite build --config vite.config.ssr.ts --outDir dist/server",
     "build:netlify": "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Checking _redirects content...' && cat dist/client/_redirects && echo 'Build complete!'",
     "build:dev": "vite build --mode development",
     "serve": "NODE_ENV=production node dist/server/entry-server.js",

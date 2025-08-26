@@ -15,7 +15,7 @@ interface RenderResult {
   status?: number;
 }
 
-export function render(url: string): RenderResult {
+function render(url: string): RenderResult {
   console.log('=== SSR RENDER START ===');
   console.log('URL:', url);
   console.log('Node environment check:', typeof window === 'undefined' ? 'Server (Node.js)' : 'Client (Browser)');
@@ -107,3 +107,8 @@ export function render(url: string): RenderResult {
     };
   }
 }
+
+// Export for both CommonJS and ES modules compatibility
+module.exports = { render };
+module.exports.render = render;
+module.exports.default = { render };

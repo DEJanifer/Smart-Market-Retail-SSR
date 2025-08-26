@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: 'src/entry-server.tsx',
       output: {
-        format: 'es',
+        format: 'cjs', // Changed from 'es' to 'cjs' for Netlify compatibility
         entryFileNames: 'entry-server.js',
         // Bundle everything into a single file
         inlineDynamicImports: true,
@@ -27,7 +27,7 @@ export default defineConfig({
     },
     target: 'node16',
     minify: false,
-    // Bundle all dependencies
+    // Bundle all dependencies for CommonJS compatibility
     commonjsOptions: {
       ignoreDynamicRequires: true,
     },
@@ -36,5 +36,7 @@ export default defineConfig({
     // Externalize Node.js built-in modules but bundle npm packages
     external: [...builtinModules, ...builtinModules.map(m => `node:${m}`)],
     target: 'node',
+    // Ensure proper module resolution for CommonJS output
+    noExternal: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
   },
 })

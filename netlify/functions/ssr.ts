@@ -9,6 +9,10 @@ const handler: Handler = async (event) => {
   console.log('Processing URL:', url);
   console.log('Method:', event.httpMethod);
   
+  // Special handling for home page
+  const normalizedUrl = url === '' ? '/' : url;
+  console.log('Normalized URL:', normalizedUrl);
+
   // Handle non-GET requests
   if (event.httpMethod !== 'GET') {
     return {
@@ -132,7 +136,7 @@ const handler: Handler = async (event) => {
     console.log('Calling render function for URL:', url);
     
     // Render the app
-    const { appHtml, helmet, status } = render(url);
+    const { appHtml, helmet, status } = render(normalizedUrl);
     
     console.log('Render successful, HTML length:', appHtml?.length);
     console.log('Has helmet data:', !!helmet);

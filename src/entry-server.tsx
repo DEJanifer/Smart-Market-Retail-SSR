@@ -16,10 +16,17 @@ interface RenderResult {
 }
 
 export function render(url: string): RenderResult {
+  console.log('=== SSR RENDER START ===');
+  console.log('URL:', url);
+  console.log('Node environment check:', typeof window === 'undefined' ? 'Server (Node.js)' : 'Client (Browser)');
+  
   // Create a helmet context to capture the tags
   const helmetContext: any = {};
+  console.log('Helmet context created:', !!helmetContext);
   
   try {
+    console.log('Starting ReactDOMServer.renderToString...');
+    
     // Add data-server-rendered attribute to help with hydration
     const appHtml = ReactDOMServer.renderToString(
       <div data-server-rendered="true">
@@ -31,8 +38,15 @@ export function render(url: string): RenderResult {
       </div>
     );
 
+    console.log('ReactDOMServer.renderToString completed');
+    console.log('App HTML length:', appHtml?.length || 0);
+    console.log('App HTML preview (first 200 chars):', appHtml?.substring(0, 200) || 'EMPTY');
+    console.log('App HTML contains data-server-rendered:', appHtml?.includes('data-server-rendered') || false);
+    
     // Extract helmet data after rendering
     const { helmet } = helmetContext;
+    console.log('Helmet context after render:', !!helmet);
+    console.log('Helmet keys:', helmet ? Object.keys(helmet) : 'No helmet');
     
     // Ensure we have all the necessary helmet components
     // Priority is important here - we want the most specific tags
@@ -42,6 +56,13 @@ export function render(url: string): RenderResult {
       link: helmet?.link?.toString() || '',
       script: helmet?.script?.toString() || '',
     };
+
+    console.log('Helmet data processed:', {
+      titleLength: helmetData.title?.length || 0,
+      metaLength: helmetData.meta?.length || 0,
+      linkLength: helmetData.link?.length || 0,
+      scriptLength: helmetData.script?.length || 0
+    });
 
     // Debug logging to verify meta tags are captured
     console.log('SSR Rendering URL:', url);
@@ -53,6 +74,8 @@ export function render(url: string): RenderResult {
       metaSample: helmetData.meta?.substring(0, 500)
     });
 
+    console.log('=== SSR RENDER SUCCESS ===');
+    
     return {
       appHtml,
       helmet: helmetData,
@@ -60,6 +83,9 @@ export function render(url: string): RenderResult {
     };
   } catch (error) {
     console.error('SSR Render Error:', error);
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
     
     // Return a fallback with basic meta tags
     return {

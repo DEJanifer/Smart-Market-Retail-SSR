@@ -19,7 +19,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   title = 'SMART MARKET RETAIL - A Smarter Way to Vend',
   description = 'SMART MARKET RETAIL provides innovative vending solutions including Smart Stores, Micro Markets, and traditional vending services across Carroll and Baltimore County, Maryland.',
   keywords = 'vending machines, smart vending, micro markets, office vending, Carroll County, Baltimore County, Maryland',
-  ogImage,
+  ogImage = '/Smart Store 700 05.1_large.webp', // Default image
   ogType = 'website',
   skipMetaTags = false // Default to false for backward compatibility
 }) => {

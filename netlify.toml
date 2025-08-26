@@ -1,3 +1,5 @@
+# netlify.toml
+
 [build]
   command = "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Checking _redirects content...' && cat dist/client/_redirects && echo 'Build complete!'"
   publish = "dist/client"
@@ -7,6 +9,16 @@
   node_bundler = "esbuild"
   included_files = ["dist/**"]
 
+# This is the correct, standard rule for SSR on Netlify.
+# It tells Netlify to serve any static files it finds in the publish directory first,
+# and for any other request, rewrite it with the SSR function.
+# This MUST come before the header rules.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/ssr"
+  status = 200
+
+# Your existing header rules (unchanged)
 [[headers]]
   for = "/*"
   [headers.values]

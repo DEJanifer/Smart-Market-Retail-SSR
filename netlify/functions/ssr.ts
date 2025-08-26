@@ -94,10 +94,10 @@ const handler: Handler = async (event) => {
       console.log('Checking server bundle at:', possiblePath);
       if (fs.existsSync(possiblePath)) {
         serverPath = possiblePath;
-        // Clear require cache for hot reloading
-        delete require.cache[possiblePath];
         try {
-          serverModule = require(possiblePath);
+          // Use dynamic import for ES modules
+          const fileUrl = `file://${possiblePath}`;
+          serverModule = await import(fileUrl);
           console.log('Server bundle loaded from:', serverPath);
           break;
         } catch (e) {
@@ -119,7 +119,7 @@ const handler: Handler = async (event) => {
     }
 
     // Get the render function
-    const render = serverModule.render || serverModule.default?.render;
+    const render = serverModule.default?.render || serverModule.render;
     
     if (!render || typeof render !== 'function') {
       console.error('Render function not found in server module');

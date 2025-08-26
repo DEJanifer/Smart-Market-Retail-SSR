@@ -1,7 +1,5 @@
-# netlify.toml
-
 [build]
-  command = "npm run build && echo 'Copying all files...' && cp -r public/* dist/client/ && echo 'Ensuring index.html exists...' && ls -la dist/client/index.html && echo 'Copying _redirects...' && cp public/_redirects dist/client/_redirects && echo 'Checking _redirects content...' && cat dist/client/_redirects && echo 'Build complete!'"
+  command = "npm run build:netlify"
   publish = "dist/client"
 
 [functions]
@@ -9,7 +7,7 @@
   node_bundler = "esbuild"
   included_files = ["dist/**"]
 
-# Serve static assets first
+# Serve static assets first with proper caching
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"

@@ -1,11 +1,11 @@
 ---
-title: 'Is Your Breakroom Driving Employees Away? 5 Signs You Need a Micro Market' 
-slug: 'is-your-breakroom-driving-employees-away' 
-date: 'August 18, 2025' 
-author: 'Devin Janifer' 
-summary: 'Boost employee satisfaction and transform your company culture by upgrading to a Micro Market, the ultimate modern breakroom solution. This guide reveals the five warning signs that your current office amenities are failing and shows how unattended retail technology can solve them' 
-imageUrl: '/blog-4-dimmly-lit-break-room.webp' 
-metaTitle: 'Upgrade Your Breakroom with a Micro Market | Smart Market Retail Blog'
+title: "Is Your Breakroom Driving Employees Away? 5 Signs You Need a Micro Market" 
+slug: "is-your-breakroom-driving-employees-away"
+date: "August 18, 2025"
+author: "Devin Janifer"
+summary: "Boost employee satisfaction and transform your company culture by upgrading to a Micro Market, the ultimate modern breakroom solution. This guide reveals the five warning signs that your current office amenities are failing and shows how unattended retail technology can solve them." 
+imageUrl: "/blog-4-dimmly-lit-break-room.webp" 
+metaTitle: "Upgrade Your Breakroom with a Micro Market | Smart Market Retail Blog"
 metaDescription: "Boost employee satisfaction and transform your company culture with modern breakroom solutions. The 5 signs that tell you to upgrade to a Micro Market."
 ---
 

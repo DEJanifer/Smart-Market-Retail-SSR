@@ -9,18 +9,31 @@ export const useLoadingScreen = (duration: number = 1500) => {
       return;
     }
     
-    // Check if this is the first visit
-    const hasVisited = sessionStorage.getItem('hasVisited');
+    // Check for external referrer flag
+    const isExternalReferrer = 
+      (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('externalReferrer') === 'true') || 
+      (window as any).__EXTERNAL_REFERRER__ === true;
     
-    if (!hasVisited) {
+    // Check if user has visited before
+    const hasVisited = typeof sessionStorage !== 'undefined' && sessionStorage.getItem('hasVisited') === 'true';
+    
+    // Only show loading screen for first-time internal visitors
+    if (!isExternalReferrer && !hasVisited) {
       setIsLoading(true);
-      sessionStorage.setItem('hasVisited', 'true');
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('hasVisited', 'true');
+      }
       
       const timer = setTimeout(() => {
         setIsLoading(false);
       }, duration);
       
       return () => clearTimeout(timer);
+    } else {
+      // Clear external referrer flag after checking
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.removeItem('externalReferrer');
+      }
     }
   }, [duration]);
   

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { SitemapProvider, useSitemap } from './contexts/SitemapContext';
 import ScrollToTop from './components/ScrollToTop';
+import LoadingScreen from './components/LoadingScreen';
+import { useLoadingScreen } from './hooks/useLoadingScreen';
 
 // Direct imports instead of lazy loading for SSR compatibility
 import Home from './pages/Home';
@@ -52,6 +54,12 @@ function AppContent() {
 }
 
 function App() {
+  const isLoading = useLoadingScreen();
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <SitemapProvider>
       <ScrollToTop />

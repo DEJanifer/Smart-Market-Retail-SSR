@@ -1,5 +1,5 @@
 ---
-title: "Calculating the ROI of a Breakroom Upgrade: More Than Just Snacks'"
+title: "Calculating the ROI of a Breakroom Upgrade: More Than Just Snacks"
 slug: "roi-of-modern-office-amenities"
 date: "August 20, 2025"
 author: "Devin Janifer"

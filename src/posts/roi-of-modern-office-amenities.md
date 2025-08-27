@@ -22,9 +22,9 @@ The most direct financial gain from a modern breakroom is the immediate impact o
 
 Now, let’s put a number on it. Lets say you have \100 employees and half go out to get coffee;
 
-•	Time Saved Per Employee Per Day: \20 minutes (conservative estimate)
+•	Time Saved Per Employee Per Day: 20 minutes (conservative estimate)
 
-•	Number of Employees: \50
+•	Number of Employees: 50
 
 •	Total Time Saved Per Day: 1,000 minutes (16.7 hours)
 

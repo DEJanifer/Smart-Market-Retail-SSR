@@ -11,6 +11,18 @@ export default {
         peach: '#FFCDB2',
         teal: '#40E0D0',
       },
+      // Add or modify the typography section here
+      typography: ({ theme }) => ({
+        invert: { // This targets the prose-invert variant
+          css: {
+            // Set the CSS variable that controls the body text color for prose-invert
+            '--tw-prose-invert-body': 'rgba(224, 176, 255, 0.8)', // This is lavender/80
+            // You can also set other colors here if needed, e.g.,
+            // '--tw-prose-invert-headings': theme('colors.mint'),
+            // '--tw-prose-invert-links': theme('colors.coral'),
+          },
+        },
+      }),
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
@@ -41,6 +53,9 @@ export default {
     },
   },
   plugins: [
+    // Add the @tailwindcss/typography plugin here
+    require('@tailwindcss/typography'),
+    // Your existing custom function to add utilities
     function({ addUtilities }) {
       const newUtilities = {
         // Interactive button states

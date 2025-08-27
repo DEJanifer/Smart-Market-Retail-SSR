@@ -17,11 +17,13 @@ export default {
           css: {
             a: {
               textDecoration: 'none', // Remove underline for all links
-              // You can also define hover states here if needed
+              color: theme('colors.mint'), // Base color for links
+              '&:hover': {
+                color: theme('colors.coral'), // Hover color for links
               // '&:hover': {
               //   color: theme('colors.coral'), // Example hover color
               //   textDecoration: 'underline', // Example: add underline on hover
-              // },
+              },
             },
             // ... other default prose styles
           },
@@ -32,10 +34,13 @@ export default {
             '--tw-prose-invert-body': 'rgba(224, 176, 255, 0.8)', // This is lavender/80
             a: {
               textDecoration: 'none', // Remove underline for links in prose-invert
-            // You can also set other colors here if needed, e.g.,
+              color: theme('colors.mint'), // Base color for links in prose-invert
+              '&:hover': {
+                color: theme('colors.coral'), // Hover color for links in prose-invert
             // '--tw-prose-invert-headings': theme('colors.mint'),
             // '--tw-prose-invert-links': theme('colors.coral'),
               },
+            },
           },
         },
       }),

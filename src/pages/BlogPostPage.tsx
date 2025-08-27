@@ -228,7 +228,7 @@ const BlogPostPage: React.FC = () => {
                 
                 <div 
                   className="prose prose-invert sm:prose-lg max-w-none
-+                prose-headings:text-mint prose-a:text-mint prose-strong:text-mint prose-blockquote:border-coral prose-blockquote:text-peach/80"
++                prose-headings:text-mint prose-strong:text-mint prose-blockquote:border-coral prose-blockquote:text-peach/80"
                   dangerouslySetInnerHTML={{ __html: post.content }} 
                 />
               </article>

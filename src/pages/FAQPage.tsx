@@ -77,6 +77,10 @@ const FAQPage: React.FC = () => {
     { key: 'products' as const, title: 'Products & Customization', description: 'Product offerings and customization options' }
   ];
 
+    console.log("FAQPage: Component rendering."); // Check if component renders at all
+    console.log("FAQPage: Total FAQs loaded:", faqs.length); // Check if faqs array has data
+
+
   return (
     <PageLayout
       title="Frequently Asked Questions (FAQ) | Smart Market Retail | Micro Markets & Smart Stores in Carroll & Baltimore County, MD"
@@ -107,7 +111,8 @@ const FAQPage: React.FC = () => {
           <div className="container mx-auto px-4 md:px-6">
             {categories.map(category => {
               const categoryFAQs = getFAQsByCategory(category.key);
-              
+              console.log(`FAQPage: Category "${category.key}" has ${categoryFAQs.length} FAQs.`); // Check FAQs per category
+
               return (
                 <div key={category.key} className="mb-16">
                   <div className="mb-8">
@@ -120,53 +125,56 @@ const FAQPage: React.FC = () => {
                   </div>
 
                   <div className="space-y-4">
-                    {categoryFAQs.map(faq => (
-                      <div 
-                        key={faq.id}
-                        id={faq.id}
-                        className="bg-navy/50 border border-mint/20 rounded-lg overflow-hidden hover:bg-navy/70 transition-colors scroll-mt-24"
-                      >
-                        <button
-                          onClick={() => toggleFAQ(faq.id)}
-                          className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-mint/5 transition-colors group"
-                          aria-expanded={openFAQs.has(faq.id)}
+                    {categoryFAQs.map(faq => {
+                      console.log(`FAQPage: Rendering FAQ ID: ${faq.id}, Question: ${faq.question.substring(0, 30)}...`); // Check individual FAQ rendering
+                      return (
+                        <div 
+                          key={faq.id}
+                          id={faq.id}
+                          className="bg-navy/50 border border-mint/20 rounded-lg overflow-hidden hover:bg-navy/70 transition-colors scroll-mt-24"
                         >
-                          <h3 className={`text-lg md:text-xl font-bold pr-4 transition-colors ${
-                            openFAQs.has(faq.id) ? 'text-coral' : 'text-mint group-hover:text-coral'
-                          }`}>
-                            {faq.question}
-                          </h3>
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                copyFAQLink(faq.id);
-                              }}
-                              className="p-1 hover:bg-mint/20 rounded transition-colors"
-                              title="Copy link to this FAQ"
-                            >
-                              <LinkIcon 
-                                className={`flex-shrink-0 ${copySuccess === faq.id ? 'text-green-400' : 'text-coral hover:text-mint'}`} 
-                                size={18} 
-                              />
-                            </button>
-                            {openFAQs.has(faq.id) ? (
-                              <ChevronUp className="text-coral flex-shrink-0" size={24} />
-                            ) : (
-                              <ChevronDown className="text-coral flex-shrink-0" size={24} />
-                            )}
-                          </div>
-                        </button>
-                        
-                        {openFAQs.has(faq.id) && (
-                          <div className="px-6 pb-6 animate-fade-in">
-                            <div className="text-lavender/90 leading-relaxed border-t border-mint/10 pt-4">
-                              {faq.answer}
+                          <button
+                            onClick={() => toggleFAQ(faq.id)}
+                            className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-mint/5 transition-colors group"
+                            aria-expanded={openFAQs.has(faq.id)}
+                          >
+                            <h3 className={`text-lg md:text-xl font-bold pr-4 transition-colors ${
+                              openFAQs.has(faq.id) ? 'text-coral' : 'text-mint group-hover:text-coral'
+                            }}`}>
+                              {faq.question}
+                            </h3>
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  copyFAQLink(faq.id);
+                                }}
+                                className="p-1 hover:bg-mint/20 rounded transition-colors"
+                                title="Copy link to this FAQ"
+                              >
+                                <LinkIcon 
+                                  className={`flex-shrink-0 ${copySuccess === faq.id ? 'text-green-400' : 'text-coral hover:text-mint'}`} 
+                                  size={18} 
+                                />
+                              </button>
+                              {openFAQs.has(faq.id) ? (
+                                <ChevronUp className="text-coral flex-shrink-0" size={24} />
+                              ) : (
+                                <ChevronDown className="text-coral flex-shrink-0" size={24} />
+                              )}
                             </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                          </button>
+                          
+                          {openFAQs.has(faq.id) && (
+                            <div className="px-6 pb-6 animate-fade-in">
+                              <div className="text-lavender/90 leading-relaxed border-t border-mint/10 pt-4">
+                                {faq.answer}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               );

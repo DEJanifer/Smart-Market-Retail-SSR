@@ -13,13 +13,29 @@ export default {
       },
       // Add or modify the typography section here
       typography: ({ theme }) => ({
+        DEFAULT: { // This targets the default 'prose' variant
+          css: {
+            a: {
+              textDecoration: 'none', // Remove underline for all links
+              // You can also define hover states here if needed
+              // '&:hover': {
+              //   color: theme('colors.coral'), // Example hover color
+              //   textDecoration: 'underline', // Example: add underline on hover
+              // },
+            },
+            // ... other default prose styles
+          },
+        },
         invert: { // This targets the prose-invert variant
           css: {
             // Set the CSS variable that controls the body text color for prose-invert
             '--tw-prose-invert-body': 'rgba(224, 176, 255, 0.8)', // This is lavender/80
+            a: {
+              textDecoration: 'none', // Remove underline for links in prose-invert
             // You can also set other colors here if needed, e.g.,
             // '--tw-prose-invert-headings': theme('colors.mint'),
             // '--tw-prose-invert-links': theme('colors.coral'),
+              },
           },
         },
       }),

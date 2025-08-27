@@ -38,7 +38,9 @@ Employee turnover is one of the largest hidden expenses in any business. The cos
 
 So, where does the breakroom fit in? It's a critical component of daily job satisfaction and employee retention. High-quality office amenities are a tangible, daily signal that a company invests in its people. A workplace that offers fresh, convenient, and varied food and beverage options is simply a better place to work. While a great breakroom alone won’t stop all turnover, it is a major contributor to the positive daily experience that keeps your best people from looking elsewhere. Preventing just one employee from leaving can often pay for the perceived "cost" of a breakroom service for an entire year.
                                                                                                                                 
-&nbsp;
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/blog-5-employee-eating-lunch.webp" alt="A smiling worker enjoying their lunch from a self-service micro market that features fresh foods, bean-to-cup coffee, and a self-checkout station with snacks " class="w-full h-auto object-cover" />
+</div>
 
 #### <span class="text-mint">Section 3: The Soft ROI, Part 1:</span> <span class="text-coral">Building a Magnetic Company Culture</span>
 

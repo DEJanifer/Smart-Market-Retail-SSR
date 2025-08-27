@@ -28,13 +28,13 @@ Now, let’s put a number on it. Lets say you have 100 employees and half go out
 
 •	Total Time Saved Per Day: 1,000 minutes (16.7 hours)
 
-If your average employee wage is \$24-hour, that’s \$400 in reclaimed productivity every single day, or to put it another way, about \$8000 a month. By transforming your space into a functional employee lounge with an excellent office coffee service and appealing options from a [Micro Market](https://smartmarketretail.com/blog/what-exactly-is-a-micro-market) you eliminate the need for these daily excursions. You give your team a reason to stay, you reduce their own cost, foster collaboration at the watering hole, and reduce the risk of them losing productive momentum.
+If your average employee wage is \\$24-hour, that’s \\$400 in reclaimed productivity every single day, or to put it another way, about \\$8000 a month. By transforming your space into a functional employee lounge with an excellent office coffee service and appealing options from a [Micro Market](https://smartmarketretail.com/blog/what-exactly-is-a-micro-market) you eliminate the need for these daily excursions. You give your team a reason to stay, you reduce their own cost, foster collaboration at the watering hole, and reduce the risk of them losing productive momentum.
 
 &nbsp; 
 
 #### <span class="text-mint">Section 2: The Hard ROI, Part 2:</span> <span class="text-coral">Slashing the Staggering Cost of Turnover</span>
 
-Employee turnover is one of the largest hidden expenses in any business. The cost to replace a salaried employee is staggering. [A 2024 report from the Work Institute](https://info.workinstitute.com/hubfs/2024%20Retention%20Report/Work%20Institute%202024%20Retention%20Report.pdf) found that the cost of employee turnover can be as high as 33% of an employee's annual salary. For an employee making \$60,000, that’s a \$20,000 loss every time someone walks out the door.
+Employee turnover is one of the largest hidden expenses in any business. The cost to replace a salaried employee is staggering. [A 2024 report from the Work Institute](https://info.workinstitute.com/hubfs/2024%20Retention%20Report/Work%20Institute%202024%20Retention%20Report.pdf) found that the cost of employee turnover can be as high as 33% of an employee's annual salary. For an employee making \\$60,000, that’s a \\$20,000 loss every time someone walks out the door.
 
 So, where does the breakroom fit in? It's a critical component of daily job satisfaction and employee retention. High-quality office amenities are a tangible, daily signal that a company invests in its people. A workplace that offers fresh, convenient, and varied food and beverage options is simply a better place to work. While a great breakroom alone won’t stop all turnover, it is a major contributor to the positive daily experience that keeps your best people from looking elsewhere. Preventing just one employee from leaving can often pay for the perceived "cost" of a breakroom service for an entire year.
 
@@ -62,7 +62,7 @@ We’ve calculated the gains in productivity, the savings in retention, and the 
 
 For most businesses, this is the reality. Smart Market Retail provides, installs, and fully services state-of-the-art Micro Markets and smart vending solutions at [no cost to your business.](https://smartmarketretail.com/faq#cost-to-business) We manage the inventory, the technology, and the service. You simply provide the space for this powerful amenity.
 
-When your capital investment is \$0, any financial gain you receive—from that \$400 in daily reclaimed productivity to the \$20,000 saved by retaining one employee—results in a technically infinite ROI. You get all of the upside without the upfront cost, making this one of the safest, smartest financial decisions a manager can make.
+When your capital investment is \\$0, any financial gain you receive—from that \\$400 in daily reclaimed productivity to the \\$20,000 saved by retaining one employee—results in a technically infinite ROI. You get all of the upside without the upfront cost, making this one of the safest, smartest financial decisions a manager can make.
 
 &nbsp; 
 

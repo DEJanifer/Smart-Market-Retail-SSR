@@ -20,7 +20,7 @@ This post is for the decision-makers, the leaders who look at the numbers. We’
 
 The most direct financial gain from a modern breakroom is the immediate impact on employee productivity. The calculation is simple. First, estimate how much time your employees spend leaving the office each day for coffee, drinks, or lunch. This "off-campus drain" is often significant. A 15-minute coffee run can easily stretch to 25 minutes with travel and wait times.
 
-Now, let’s put a number on it. Lets say you have \100 employees and half go out to get coffee;
+Now, let’s put a number on it. Lets say you have 100 employees and half go out to get coffee;
 
 •	Time Saved Per Employee Per Day: 20 minutes (conservative estimate)
 

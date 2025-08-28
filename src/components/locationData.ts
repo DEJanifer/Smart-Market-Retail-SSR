@@ -104,7 +104,7 @@ export const locationTypes: LocationType[] = [
         'Wide selection of snacks and beverages',
         'AI-powered inventory management for fewer stockouts',
       ],
-      image: '/Smart Store 700 15.1.jpg',
+      image: '/Smart Store 700 15.1.webp',
     },
     microMarket: {
       title: 'Micro Market Solutions',

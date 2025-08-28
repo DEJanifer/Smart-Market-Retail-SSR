@@ -149,7 +149,7 @@ const LocationPage: React.FC = () => {
       title: 'Mid & High-Rise Apartments',
       description: 'People living in apartments sometimes need snacks or drinks without going to the store. Smart vending in the lobby gives residents what they need instantly.',
       image: '/Mid-rise.jpg',
-      path: '/locations/apartments',
+      path: '/locations/apartments-multi-family',
       benefits: [
         'Resident convenience',
         'Property value add',

@@ -1,59 +1,57 @@
-/**
- * @file This file centralizes all data related to different location types where Smart Market Retail solutions are applicable.
- * It is the single source of truth for content on the dynamic location pages.
- * By centralizing this data, we can easily manage and scale the location-specific content without duplicating code.
- */
-
-// Define a TypeScript interface for a single location type to ensure data consistency.
+// src/components/locationData.ts
 export interface LocationType {
-  slug: string; // URL-friendly identifier (e.g., 'office-buildings')
-  title: string; // Human-readable title (e.g., 'Office Buildings')
-  path: string; // The URL path for routing
+  slug: string;
+  name: string;
+  path: string;
+  image?: string; // Existing field
+  description: string; // Existing field
+  // New fields below
+  title: string;
   hero: {
     peachText: string;
     description: string;
-    pexelsId?: string; // Optional Pexels ID for hero image
-    image?: string; // Optional local image path
+    pexelsId?: string;
+    image?: string;
   };
   benefits: {
     title: string;
-    items: {
-      icon: string; // Corresponds to a Lucide icon name
+    items: Array<{
+      icon: string; // e.g., "CheckCircle"
       title: string;
       description: string;
-    }[];
+    }>;
   };
-  painPoints: {
-    icon: string; // Lucide icon name for the pain point
-    title: string; // SEO-optimized title for the pain point
-    point: string; // Description of the pain point
-  }[];
-  customSolutions: {
-    title: string; // Solution title
-    description: string; // Solution description
-  }[];
-  faq: {
-    question: string; // Frequently asked question
-    answer: string; // Answer to the question
-  }[];
+  painPoints: Array<{
+    icon: string; // e.g., "Frown"
+    title: string;
+    point: string;
+  }>;
+  customSolutions: Array<{
+    title: string;
+    description: string;
+  }>;
   smartStore: {
     title: string;
     description: string;
+    image: string;
     features: string[];
-    image: string; // Path to the showcase image
   };
   microMarket: {
     title: string;
     description: string;
+    image: string;
     features: string[];
-    image: string; // Path to the showcase image
   };
-  smartCoolers?: {
+  smartCoolers?: { // Optional
     title: string;
     description: string;
+    image: string;
     features: string[];
-    image: string; // Path to the showcase image
   };
+  faq: Array<{
+    question: string;
+    answer: string;
+  }>;
   seo: {
     title: string;
     description: string;
@@ -61,17 +59,19 @@ export interface LocationType {
   };
 }
 
-
 // The main array containing all location data.
 export const locationTypes: LocationType[] = [
   {
     slug: 'office-buildings',
-    title: 'Office Buildings',
+    name: 'Office Buildings',
     path: '/locations/office-buildings',
+    image: '', // Existing image field
+    description: 'Transform your office breakroom into a hub of convenience and productivity with our advanced vending solutions.',
+    title: 'Office Buildings', // Example for the new title field
     hero: {
-      peachText: 'Elevate Your Workplace with Modern Vending Solutions',
-      description: "In today's competitive job market, top-tier amenities are essential for attracting and retaining talent. Smart Market Retail offers advanced vending solutions that transform your office breakroom into a hub of convenience and productivity. Our Smart Stores and Micro Markets provide employees with 24/7 access to fresh food, snacks, and beverages, keeping them fueled and focused throughout the day.",
-      pexelsId: '3184423',
+      peachText: 'Enhance Your Workplace with Modern Vending',
+      description: "In today's competitive job market, top-tier amenities are essential for attracting and retaining talent. Smart Market Retail offers advanced vending solutions that transform your office breakroom into a hub of convenience and productivity. Our Smart Stores and Micro Markets provide employees with 24/7 access to fresh food, snacks, and beverages, keeping them fueled and focused throughout the day.", // Existing description field
+      pexelsId: '1170412',
     },
     benefits: {
       title: 'Benefits for the Modern Workplace',
@@ -95,13 +95,6 @@ export const locationTypes: LocationType[] = [
       { title: 'Contactless Payment Systems', description: 'Modern, hygienic payment options that employees prefer' },
       { title: 'Customized Product Selection', description: 'Tailor offerings to your team\'s preferences and dietary needs' },
     ],
-    faq: [
-      { question: 'How quickly can you install vending solutions in our office?', answer: 'Most office installations can be completed within 4-6 weeks of signing, depending on your space requirements and customization needs.' },
-      { question: 'Can you accommodate dietary restrictions and preferences?', answer: 'Absolutely! We work with you to stock products that meet your team\'s dietary needs, including gluten-free, vegan, and healthy options.' },
-      { question: 'What payment methods do your machines accept?', answer: 'Our smart vending machines accept credit/debit cards, mobile payments (Apple Pay, Google Pay), and can integrate with corporate payment systems.' },
-      { question: 'Do you provide ongoing maintenance and restocking?', answer: 'Yes, we handle all maintenance, restocking, and monitoring. Our smart technology alerts us when products are running low or if any issues arise.' },
-      { question: 'Can we track usage and spending for expense management?', answer: 'Yes, we provide detailed reporting and analytics that can help with corporate expense tracking and budget planning.' },
-    ],
     smartStore: {
       title: 'Smart Store Solutions',
       description: "Ideal for smaller office spaces or secondary break areas, our Smart Store vending machines offer a curated selection of popular snacks and drinks. Featuring 'tap, grab, and go' technology, they provide a frictionless experience that gets your team back to work quickly. Remote monitoring ensures machines are always stocked with favorites.",
@@ -111,7 +104,7 @@ export const locationTypes: LocationType[] = [
         'Wide selection of snacks and beverages',
         'AI-powered inventory management for fewer stockouts',
       ],
-      image: '/Smart Store 700 15.1.jpg',
+      image: '/Smart Store 700 15.1.webp',
     },
     microMarket: {
       title: 'Micro Market Solutions',
@@ -135,20 +128,30 @@ export const locationTypes: LocationType[] = [
       ],
       image: '/CoolSmart_AI_Solo_Center.webp',
     },
+    faq: [
+      { question: 'How quickly can you install vending solutions in our office?', answer: 'Most office installations can be completed within 4-6 weeks of signing, depending on your space requirements and customization needs.' },
+      { question: 'Can you accommodate dietary restrictions and preferences?', answer: 'Absolutely! We work with you to stock products that meet your team\'s dietary needs, including gluten-free, vegan, and healthy options.' },
+      { question: 'What payment methods do your machines accept?', answer: 'Our smart vending machines accept credit/debit cards, mobile payments (Apple Pay, Google Pay), and can integrate with corporate payment systems.' },
+      { question: 'Do you provide ongoing maintenance and restocking?', answer: 'Yes, we handle all maintenance, restocking, and monitoring. Our smart technology alerts us when products are running low or if any issues arise.' },
+      { question: 'Can we track usage and spending for expense management?', answer: 'Yes, we provide detailed reporting and analytics that can help with corporate expense tracking and budget planning.' },
+    ],
     seo: {
-      title: 'Office Vending Solutions | Smart Market Retail | Maryland',
-      description: "Upgrade your office breakroom with Smart Market Retail's vending solutions. We offer smart stores and micro markets for offices in Carroll & Baltimore County, MD, to boost morale and productivity.",
-      keywords: 'office vending, corporate vending, breakroom solutions, employee amenities, micro market, smart store, office coffee service, Maryland vending services',
+      title: 'Office Building Vending Solutions | Smart Market Retail',
+      description: 'Modern vending solutions for office buildings in Carroll & Baltimore County MD. Boost employee morale with Smart Stores and Micro Markets.',
+      keywords: 'office vending, office breakroom, smart vending machines, micro markets, employee benefits',
     },
   },
   {
     slug: 'apartments-multi-family',
-    title: 'Apartments & Multi-Family Housing',
+    name: 'Apartments & Multi-Family Housing',
     path: '/locations/apartments-multi-family',
+    image: '', // Existing image field
+    description: "Smart Market Retail provides cutting-edge vending solutions that offer your residents 24/7 access to snacks, drinks, and everyday essentials right where they live.", // Existing description field
+    title: 'Apartments & Multi-Family Housing', // Example for the new title field
     hero: {
       peachText: 'Modern Amenities for Modern Residents',
-      description: "In a competitive rental market, standout amenities can make all the difference. Smart Market Retail provides cutting-edge vending solutions that offer your residents 24/7 access to snacks, drinks, and everyday essentials right where they live. Enhance your property's appeal and provide a valuable service that sets you apart.",
-      image: '/Mid-rise.jpg',
+      description: "In a competitive rental market, standout amenities can make all the difference. Smart Market Retail provides cutting-edge vending solutions that offer your residents 24/7 access to snacks, drinks, and everyday essentials right where they live. Enhance your property's appeal and provide a valuable service that sets you apart.", // Existing description field
+      pexelsId: '/Mid-rise_large.jpg',
     },
     benefits: {
       title: 'Benefits for Your Property & Residents',
@@ -220,8 +223,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'hotels-motels',
-    title: 'Hotels & Motels',
+    name: 'Hotels & Motels',
     path: '/locations/hotels-motels',
+    image: '', // Existing image field
+    description: "Today's travelers expect convenience, flexibility, and quick access to essentials—any time of day or night.", // Existing description field
+    title: 'Hotels & Motels', // Example for the new title field
     hero: {
       peachText: 'Enhance Guest Experience with 24/7 Convenience',
       description: "Today's travelers expect convenience, flexibility, and quick access to essentials—any time of day or night. Whether you're managing a full-service hotel or a roadside motel, our Smart Vending solutions bring added value to your property—driving guest satisfaction and freeing your staff to focus on hospitality.",
@@ -297,8 +303,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'healthcare-facilities',
-    title: 'Healthcare Facilities',
+    name: 'Healthcare Facilities',
     path: '/locations/healthcare-facilities',
+    image: '', // Existing image field
+    description: "Smart Market Retail provides reliable, 24/7 vending solutions that offer a moment of comfort and convenience during stressful times.", // Existing description field
+    title: 'Healthcare Facilities', // Example for the new title field
     hero: {
       peachText: 'Nourishment and Comfort for Staff, Patients, & Visitors',
       description: 'Hospitals, clinics, and healthcare facilities operate around the clock, and so do their dedicated staff and visitors. Smart Market Retail provides reliable, 24/7 vending solutions that offer a moment of comfort and convenience during stressful times. Our Smart Stores and Micro Markets provide access to healthy snacks, fresh meals, and comforting beverages for everyone in your facility.',
@@ -374,8 +383,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'colleges-universities',
-    title: 'Colleges & Universities',
-    path: '/locations/colleges-universities',
+    name: 'Colleges & Universities',
+    path: '/locations/healthcare-facilities',
+    image: '', // Existing image field
+    description: 'Our Smart Stores and Micro Markets offer the ultimate convenience, providing access to snacks, drinks, and fresh meals across campus anytime, 24/7.', // Existing description field
+    title: 'Colleges & Universities', // Example for the new title field
     hero: {
       peachText: 'Fueling Campus Life, 24/7',
       description: 'From late-night study sessions to early morning classes, college life never stops. Smart Market Retail provides innovative vending solutions that keep students, faculty, and staff fueled and ready to learn. Our Smart Stores and Micro Markets offer the ultimate convenience, providing access to snacks, drinks, and fresh meals across campus, anytime.',
@@ -393,7 +405,7 @@ export const locationTypes: LocationType[] = [
     painPoints: [
       { icon: 'Clock', title: 'Closed Dining During Study Hours', point: 'Dining halls closed during late-night study sessions' },
       { icon: 'MapPin', title: 'Limited Between-Class Options', point: 'Limited food options between classes in academic buildings' },
-      { icon: 'CreditCard', title: 'Cashless Payment Preference', point: 'Students prefer cashless, contactless transactions' },
+      { icon: 'DollarSign', title: 'Cashless Payment Preference', point: 'Students prefer cashless, contactless transactions' },
       { icon: 'Users', title: 'Peak Hour Dining Lines', point: 'Long lines at dining halls during peak hours' },
       { icon: 'BookOpen', title: 'Poor Nutrition Affecting Academics', point: 'Student academic performance suffering from poor nutrition access during intensive study periods' },
       { icon: 'Star', title: 'Declining Campus Satisfaction', point: 'Campus life satisfaction declining due to inadequate dining convenience and modern amenities' },
@@ -451,8 +463,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'high-schools',
-    title: 'High Schools',
+    name: 'High Schools',
     path: '/locations/high-schools',
+    image: '', // Existing image field
+    description: 'Tailored solutions for the high school environment, providing nutritious snacks and drinks that keep everyone energized and focused throughout the school day.', // Existing description field
+    title: 'High Schools', // Example for the new title field
     hero: {
       peachText: 'Smarter Snacking for Students and Staff',
       description: 'Elevate the break time experience for students and faculty with modern, convenient, and healthy vending options. Smart Market Retail offers secure and compliant solutions tailored for the high school environment, providing nutritious snacks and drinks that keep everyone energized and focused throughout the school day.',
@@ -528,8 +543,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'car-dealerships',
-    title: 'Car Dealerships',
+    name: 'Car Dealerships',
     path: '/locations/car-dealerships',
+    image: '', // Existing image field
+    description: 'Providing complimentary or low-cost snacks and beverages shows your commitment to customer care, improves satisfaction, and keeps your team productive.', // Existing description field
+    title: 'Car Dealerships', // Example for the new title field
     hero: {
       peachText: 'Drive Customer Satisfaction While They Wait',
       description: 'Turn waiting time into a positive experience. Smart Market Retail offers premium vending solutions that enhance your customer lounge and support your staff. Providing complimentary or low-cost snacks and beverages shows your commitment to customer care, improves satisfaction, and keeps your team productive.',
@@ -605,11 +623,14 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'sports-fitness',
-    title: 'Sports & Fitness',
+    name: 'Sports & Fitness',
     path: '/locations/sports-fitness',
+    image: '', // Existing image field
+    description: 'Smart vending solutions that offer healthy snacks, protein shakes, and hydrating beverages right in your gym or fitness center.', // Existing description field
+    title: 'Sports & Fitness', // Example for the new title field
     hero: {
       peachText: 'Refuel and Rehydrate Your Members',
-      description: 'After a tough workout, your members need to refuel. Smart Market Retail provides smart vending solutions that offer healthy snacks, protein shakes, and hydrating beverages right in your gym or fitness center. Give your members the convenience they crave and add a new revenue stream to your business.',
+      description: 'After a tough workout, your members need to refuel. Smart Market Retail provides smart vending solutions that offer healthy snacks, protein shakes, and hydrating beverages right in your gym or fitness center. Give your members the convenience they crave and fuel their body needs right onsite.',
       pexelsId: '1954524',
     },
     benefits: {
@@ -682,8 +703,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'warehouse-distribution',
-    title: 'Warehouse & Distribution',
+    name: 'Warehouse & Distribution',
     path: '/locations/warehouse-distribution',
+    image: '', // Existing image field
+    description: 'Robust, 24/7 vending solutions that ensure your employees have access to hearty meals, snacks, and drinks, no matter when they clock in.', // Existing description field
+    title: 'Warehouse & Distribution', // Example for the new title field
     hero: {
       peachText: 'Fueling Your Workforce Around the Clock',
       description: 'Warehouse and distribution center employees are the backbone of logistics, often working demanding shifts at all hours. Smart Market Retail provides robust, 24/7 vending solutions that ensure your team has access to hearty meals, snacks, and drinks, no matter when they clock in. Keep your workforce happy, productive, and on-site.',
@@ -759,11 +783,14 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'senior-living',
-    title: 'Senior Living',
+    name: 'Senior Living',
     path: '/locations/senior-living',
+    image: '', // Existing image field
+    description: 'Reduce the necessity for offsite trips. Give residents, staff, and visiting family members 24/7 access to snacks, beverages, and essentials.', // Existing description field
+    title: 'Senior Living', // Example for the new title field
     hero: {
       peachText: 'Convenience and Comfort for Residents and Staff',
-      description: 'In senior living communities, providing easy access to familiar comforts is key to resident happiness. Smart Market Retail offers gentle, user-friendly vending solutions that give residents, staff, and visiting family members 24/7 access to snacks, beverages, and essentials, fostering a sense of independence and community.',
+      description: 'In senior living communities, providing easy access to familiar comforts onsite is key to resident happiness. Smart Market Retail offers gentle, user-friendly vending solutions that give residents, staff, and visiting family members 24/7 access to snacks, beverages, and essentials, fostering a sense of independence and community.',
       pexelsId: '7551617',
     },
     benefits: {
@@ -836,8 +863,11 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'construction-sites',
-    title: 'Construction Sites',
+    name: 'Construction Sites',
     path: '/locations/construction-sites',
+    image: '', // Existing image field
+    description: 'We provide rugged, reliable vending solutions directly to your site, ensuring your team has 24/7 access to hearty food, cold drinks, and essential snacks.', // Existing description field
+    title: 'Construction Sites', // Example for the new title field
     hero: {
       peachText: 'Powering Your Crew On-Site',
       description: 'Construction work is demanding, and your crew needs fuel to stay safe and productive. Leaving the job site for lunch or breaks costs valuable time. Smart Market Retail delivers rugged, reliable vending solutions directly to your site, providing your team with 24/7 access to hearty food, cold drinks, and essential snacks.',
@@ -913,11 +943,14 @@ export const locationTypes: LocationType[] = [
   },
   {
     slug: 'high-traffic-locations',
-    title: 'High-Traffic Locations',
+    name: 'High-Traffic Locations',
     path: '/locations/high-traffic-locations',
+    image: '', // Existing image field
+    description: 'Smart Market Retail offers scalable, secure, and highly reliable vending solutions that can serve hundreds of potential customers daily, generating revenue and providing a valuable public amenity.', // Existing description field
+    title: 'High-Traffic Locations', // Example for the new title field
     hero: {
       peachText: 'Capture Opportunity with Unattended Retail',
-      description: 'Airports, train stations, shopping malls, and other public venues present a massive opportunity for unattended retail. Smart Market Retail offers scalable, secure, and highly reliable vending solutions that can serve thousands of customers daily, generating revenue and providing a valuable public amenity.',
+      description: 'Airports, train stations, shopping malls, and other public venues present a massive opportunity for unattended retail. Smart Market Retail offers scalable, secure, and highly reliable vending solutions that can serve hundreds of customers daily, generating revenue and providing a valuable public amenity.',
       pexelsId: '3184431',
     },
     benefits: {
@@ -988,6 +1021,7 @@ export const locationTypes: LocationType[] = [
       keywords: 'high traffic vending, public vending, airport vending, mall vending, unattended retail, smart retail, Maryland vending solutions',
     },
   },
+  // ... other location types with full data
 ];
 
 /**

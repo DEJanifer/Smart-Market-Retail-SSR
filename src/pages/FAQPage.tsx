@@ -262,7 +262,7 @@ const FAQPage: React.FC = () => {
               },
               { 
                 title: 'Smart Stores', 
-                path: '/solutions/smart-store', 
+                path: '/solutions/smart-stores', 
                 description: 'Intelligent grab-and-go technology with AI checkout'
               },
               { 

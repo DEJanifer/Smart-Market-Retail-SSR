@@ -602,7 +602,7 @@ export const locationTypes: LocationType[] = [
         'Reduces time lost to off-site lunch breaks',
         'A valuable perk for employee retention',
       ],
-      image: '/Medium Micro Market 05 2.jpg',
+      image: '/Large Micro Market 15.2.webp',
     },
     smartCoolers: {
       title: 'Smart Cooler Premium Refreshment Centers',

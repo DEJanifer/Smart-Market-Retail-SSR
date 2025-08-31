@@ -75,4 +75,4 @@ The question is no longer, "Can we afford to upgrade our office kitchen?" The re
 
 &nbsp;
 
-[**Ready to calculate the specific ROI for your Carroll & Baltimore County business? Contact Smart Market Retail for a free, no-obligation consultation today.**](https://smartmarketretail.com/contact)
+[**Ready to calculate the specific ROI for your Carroll or Baltimore County business? Contact Smart Market Retail for a free, no-obligation consultation today.**](https://smartmarketretail.com/contact)

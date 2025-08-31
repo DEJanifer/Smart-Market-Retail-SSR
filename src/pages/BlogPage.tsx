@@ -38,9 +38,14 @@ const BlogPage: React.FC = () => {
         <div className="bg-navy/40 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl overflow-hidden mb-6 sm:mb-8 mx-2 sm:mx-0">
           <div className="p-4 sm:p-6 md:p-10 lg:p-12">
             <div className="text-center mb-6 sm:mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-mint mb-3 sm:mb-4">From the Blog</h1>
-              <p className="text-base sm:text-lg text-lavender/80 max-w-3xl mx-auto px-2">
-                Insights and updates on the future of unattended retail.
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-mint mb-3 sm:mb-4">
+                Smart Vending & Micro Market 
+                <br /><span className="text-coral">Insights Blog</span>
+              </h1>
+              <p className="text-base sm:text-lg text-lavender/80 max-w-4xl mx-auto px-2 leading-relaxed">
+                Discover how to bring fresh grab-and-go meals, indulgent snacks, refreshing beverages, and 
+                bean-to-cup coffee experiences directly to your workplace. Get insights on using AI-powered smart vending and micro market solutions to create exceptional 
+                employee and guest experiences for your business.
               </p>
             </div>
 

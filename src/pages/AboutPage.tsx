@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PageLayout from '../components/PageLayout';
 import ImageCarousel from '../components/ImageCarousel';
 import FAQRotator from '../components/FAQRotator';
 import { Users, Target, Award, Heart, Zap, Shield, Smartphone, Eye, CreditCard, Building, DollarSign, Palette, ShoppingBag, BarChart3, UserX, Cpu, ArrowRight, ChevronDown, ChevronUp, Search, Settings, Handshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useFadeInObserver } from '../hooks/useFadeInObserver';
 
 const AboutPage: React.FC = () => {
+  useFadeInObserver();
+  
   const [expandedValue, setExpandedValue] = useState<number | null>(null);
   const [expandedOffering, setExpandedOffering] = useState<number | null>(null);
   const [expandedProcess, setExpandedProcess] = useState<number | null>(null);
@@ -21,29 +24,6 @@ const AboutPage: React.FC = () => {
   const toggleProcess = (index: number) => {
     setExpandedProcess(expandedProcess === index ? null : index);
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => {
-      document.querySelectorAll('.fade-in').forEach((el) => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
 
   const aboutImages = [
     {
@@ -417,22 +397,39 @@ const AboutPage: React.FC = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
                 <span className="text-mint">Who We</span> <span className="text-coral">Are</span>
               </h2>
-              <div className="space-y-6 text-lg text-peach/90 leading-relaxed">
+              <div className="space-y-8 text-lg text-lavender/80 leading-relaxed">
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">More Than a Room—<span className="text-coral">It's Your Company's Heartbeat</span></h3>
+                  <p>
+                    We believe a breakroom is the most underestimated room in any business. It's where your company culture comes to life, where first impressions are made on new hires, and where your team recharges to do their best work. For too long, this vital space has been neglected—an afterthought serviced by outdated technology and unreliable vendors. We saw the frustration, the lost productivity, and the missed opportunity.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">The Modern Solution <span className="text-coral">To An Outdated Problem</span></h3>
+                  <p>
+                    That's why we founded Smart Market Retail. We are here to transform your breakroom from a hidden liability into your greatest asset. We replace frustrating, old vending machines and uninspired snack closets with state-of-the-art <strong>Micro Markets</strong>, <strong>AI-powered Smart Vending</strong>, <strong>Smart Stores</strong>, and premium <strong>Office Coffee Service</strong>. We provide comprehensive breakroom solutions that turn underutilized spaces into vibrant hubs of convenience and connection.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">Your Local Partner in <span className="text-coral">Carroll & Baltimore County</span></h3>
+                  <p>
+                    As a local, owner-operated business led by me, Devin, and based right here in Westminster, MD, our name and reputation are on every installation. Unlike faceless national corporations, we are your neighbors, serving businesses and properties from Eldersburg to Manchester and throughout Carroll County. We act as your strategic partner, using data and direct feedback to curate a selection of products that your employees and customers will actually love.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">Our No-Cost <span className="text-coral">Promise to You</span></h3>
+                  <p>
+                    Here's what truly makes our partnership different: We believe a world-class amenity shouldn't be a line-item expense. For our qualifying partners, we provide the equipment, the cutting-edge technology, the professional installation, and the regular stocking and service at absolutely no cost to your business. Our success is tied directly to providing an amenity your people are excited to use.
+                  </p>
+                </div>
+                
                 <p>
-                  As your trusted partner in modern breakroom solutions, we believe workplace convenience should be smarter, more accessible, and more engaging for everyone. We saw an industry stuck in the past and recognized an opportunity to collaborate with forward-thinking organizations to create exceptional employee experiences.
+                  If you're ready to stop dealing with complaints and start providing an amenity that attracts talent, boosts satisfaction, and strengthens your company culture, then we're ready to help. Let's build a better breakroom, together.
                 </p>
-                <p>
-                  Our partnership approach is simple: we work together to transform everyday spaces into modern retail environments that your employees will love. From initial consultation through ongoing optimization, we're with you every step of the way to ensure your investment delivers lasting value.
-                </p>
-                <p>
-                  We combine cutting-edge technology with deep understanding of workplace dynamics. Our Smart Stores, Micro Markets, and intelligent vending solutions are designed through close collaboration with your team to perfectly match your space, culture, and employee preferences.
-                </p>
-                <p>
-                  More than a service provider—we're your strategic partner in creating workplace experiences that attract talent, boost satisfaction, and strengthen company culture. Together, we'll build solutions that grow with your organization and adapt to your evolving needs.
-                </p>
-                <p>
-                  Today, we're proud to partner with organizations throughout Carroll and Baltimore Counties, and we're excited to explore how we can collaborate with you.
-                </p>
+                
                 <p>
                   <a href="https://members.carrollcountychamber.org/memberdirectory/Details/smart-market-retail-4244419" target="_blank" rel="noopener noreferrer" className="text-mint hover:text-coral transition-colors mt-6 font-semibold">
                     We Are Proud Members of the Carroll County Chamber of Commerce 
@@ -445,7 +442,7 @@ const AboutPage: React.FC = () => {
                 <div className="w-full max-w-4xl">
                   <iframe 
                     title="Smart Market Retail Service Area Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327968.3475481222!2d-77.03641594999999!3d39.534632499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a660e10fa47b17f%3A0xf85df10180a8ac38!2sSmart%20Market%20Retail!5e1!3m2!1sen!2sus!4v1751824975821!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327968.3475481222!2d-77.03641594999999!3d39.534632499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sen!2sus!4v1751824975821!5m2!1sen!2sus"
                     width="100%" 
                     height="450" 
                     style={{border:0}} 
@@ -457,51 +454,71 @@ const AboutPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Mobile Layout - No Card */}
-            <div className="md:hidden">
-              <div className="fade-in max-w-4xl mx-auto">
+          {/* Mobile Layout - No Card */}
+          <div className="md:hidden">
+            <div className="fade-in max-w-4xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
                   <span className="text-mint">Who We</span> <span className="text-coral">Are</span>
                 </h2>
-                <div className="space-y-6 text-lg text-peach/90 leading-relaxed">
+                <div className="space-y-8 text-lg text-lavender/80 leading-relaxed">
+                  <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">More Than a Room—
+                    <br /><span className="text-coral">It's Your Company's Heartbeat</span></h3>
                   <p>
-                    As your trusted partner in modern breakroom solutions, we believe workplace convenience should be smarter, more accessible, and more engaging for everyone. We saw an industry stuck in the past and recognized an opportunity to collaborate with forward-thinking organizations to create exceptional employee experiences.
-                  </p>
-                  <p>
-                    Our partnership approach is simple: we work together to transform everyday spaces into modern retail environments that your employees will love. From initial consultation through ongoing optimization, we're with you every step of the way to ensure your investment delivers lasting value.
-                  </p>
-                  <p>
-                    We combine cutting-edge technology with deep understanding of workplace dynamics. Our Smart Stores, Micro Markets, and intelligent vending solutions are designed through close collaboration with your team to perfectly match your space, culture, and employee preferences.
-                  </p>
-                  <p>
-                    More than a service provider—we're your strategic partner in creating workplace experiences that attract talent, boost satisfaction, and strengthen company culture. Together, we'll build solutions that grow with your organization and adapt to your evolving needs.
-                  </p>
-                  <p>
-                    Today, we're proud to partner with organizations throughout Carroll and Baltimore Counties, and we're excited to explore how we can collaborate with you.
-                  </p>
-                  <p>
-                    <a href="https://members.carrollcountychamber.org/memberdirectory/Details/smart-market-retail-4244419" target="_blank" rel="noopener noreferrer" className="text-mint hover:text-coral transition-colors mt-6 font-semibold">
-                      We Are Proud Members of the Carroll County Chamber of Commerce 
-                    </a>
+                    We believe a breakroom is the most underestimated room in any business. It's where your company culture comes to life, where first impressions are made on new hires, and where your team recharges to do their best work. For too long, this vital space has been neglected—an afterthought serviced by outdated technology and unreliable vendors. We saw the frustration, the lost productivity, and the missed opportunity.
                   </p>
                 </div>
                 
-                {/* Google Maps iframe */}
-                <div className="fade-in mt-8 flex justify-center">
-                  <div className="w-full max-w-4xl">
-                    <iframe 
-                      title="Smart Market Retail Service Area Map"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327968.3475481222!2d-77.03641594999999!3d39.534632499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sen!2sus!4v1751824975821!5m2!1sen!2sus"
-                      width="100%" 
-                      height="450" 
-                      style={{border:0}} 
-                      allowFullScreen={true} 
-                      loading="lazy" 
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-lg shadow-glow"
-                    />
-                  </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">The Modern Solution 
+                    <br /><span className="text-coral">To An Outdated Problem</span></h3>
+                  <p>
+                    That's why we founded Smart Market Retail. We are here to transform your breakroom from a hidden liability into your greatest asset. We replace frustrating, old vending machines and uninspired snack closets with state-of-the-art <strong>Micro Markets</strong>, <strong>AI-powered Smart Vending</strong>, <strong>Smart Stores</strong>, and premium <strong>Office Coffee Service</strong>. We provide comprehensive breakroom solutions that turn underutilized spaces into vibrant hubs of convenience and connection.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">Your Local Partner
+                    <br /><span className="text-coral">In Carroll & Baltimore County</span></h3>
+                  <p>
+                    As a local, owner-operated business led by me, Devin, and based right here in Westminster, MD, our name and reputation are on every installation. Unlike faceless national corporations, we are your neighbors, serving businesses and properties from Eldersburg to Manchester and throughout Carroll County. We act as your strategic partner, using data and direct feedback to curate a selection of products that your employees and customers will actually love.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-mint mb-4">Our No-Cost <span className="text-coral">Promise to You</span></h3>
+                  <p>
+                    Here's what truly makes our partnership different: We believe a world-class amenity shouldn't be a line-item expense. For our qualifying partners, we provide the equipment, the cutting-edge technology, the professional installation, and the regular stocking and service at absolutely no cost to your business. Our success is tied directly to providing an amenity your people are excited to use.
+                  </p>
+                </div>
+                
+                <p>
+                  If you're ready to stop dealing with complaints and start providing an amenity that attracts talent, boosts satisfaction, and strengthens your company culture, then we're ready to help. Let's build a better breakroom, together.
+                </p>
+
+                <p>
+                  <a href="https://members.carrollcountychamber.org/memberdirectory/Details/smart-market-retail-4244419" target="_blank" rel="noopener noreferrer" className="text-mint hover:text-coral transition-colors mt-6 font-semibold">
+                    We Are Proud Members of the Carroll County Chamber of Commerce 
+                  </a>
+                </p>
+              </div>
+              
+              {/* Google Maps iframe */}
+              <div className="fade-in mt-8 flex justify-center">
+                <div className="w-full max-w-4xl">
+                  <iframe 
+                    title="Smart Market Retail Service Area Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327968.3475481222!2d-77.03641594999999!3d39.534632499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sen!2sus!4v1751824975821!5m2!1sen!2sus"
+                    width="100%" 
+                    height="450" 
+                    style={{border:0}} 
+                    allowFullScreen={true} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg shadow-glow"
+                  />
                 </div>
               </div>
             </div>

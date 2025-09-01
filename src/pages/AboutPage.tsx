@@ -511,8 +511,8 @@ const AboutPage: React.FC = () => {
                   <iframe 
                     title="Smart Market Retail Service Area Map"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325916.9427159213!2d-77.03641594999999!3d39.534632499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a660e10fa47b17f%3A0xf85df10180a8ac38!2sSmart%20Market%20Retail!5e1!3m2!1sen!2sus!4v1756737844913!5m2!1sen!2sus"
-                    width="100%" 
-                    height="450" 
+                    width="400" 
+                    height="300" 
                     style={{border:0}} 
                     allowFullScreen={true} 
                     loading="lazy" 

@@ -63,4 +63,4 @@ If you recognized your workplace in any of these five signs, it's a clear signal
 
 Upgrading to a Micro Market is one of the most visible and impactful investments you can make in your people. It's a comprehensive corporate food solution and the pinnacle of modern breakroom solutions. It’s a daily, tangible reminder that you value their time, their health, and their happiness, and a tool for fostering the collaboration and community that will drive your business forward. Stop thinking of your breakroom as four walls and start seeing it as the heart of your office.
 
-[**Ready to transform your breakroom from a liability into your company’s greatest asset? Contact Smart Market Retail for a no-obligation consultation today.**](https://smartmarketretail.com/contact)
+[Ready to transform your breakroom from a liability into your company’s greatest asset? Contact Smart Market Retail for a no-obligation consultation today.](https://smartmarketretail.com/contact)

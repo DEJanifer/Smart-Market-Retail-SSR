@@ -64,4 +64,4 @@ Smart Market Retail is thrilled to be part of the Carroll County business commun
 
 &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
-[**Let Smart Market Retail transform your communal space with a NO COST TO YOU sleek, intelligent retail experience that delivers real ROI and happier tenants. Contact us today.**](https://smartmarketretail.com/contact)
+[Let Smart Market Retail transform your communal space with a NO COST TO YOU sleek, intelligent retail experience that delivers real ROI and happier tenants. Contact us today.](https://smartmarketretail.com/contact)

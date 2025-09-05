@@ -55,4 +55,4 @@ In the competitive automotive landscape of 2025, every detail matters. Upgrading
 
 For dealerships across Carroll & Balttimore County, the choice is clear. We partner with your Office Manager or Facilities Manager to create a completely seamless experience, so you can focus on running your dealership. Smart Market Retail is the premier partner for dealership amenities in Maryland. We’re here to provide a powerful, no-cost solution to elevate your entire operation.
 
-[**Ready to see how a modern amenity upgrade can transform your dealership? Contact Smart Market Retail today for a free, no-obligation consultation.**](https://smartmarketretail.com/contact)
+[Ready to see how a modern amenity upgrade can transform your dealership? Contact Smart Market Retail today for a free, no-obligation consultation.](https://smartmarketretail.com/contact)

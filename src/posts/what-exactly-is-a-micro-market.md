@@ -78,4 +78,4 @@ Investing in a Micro Market is a direct investment in your most valuable asset: 
 
 &nbsp;
 
-[**Are you ready to see how a Micro Market could revolutionize your workplace? Contact the experts at Smart Market Retail today for a free, no-obligation consultation.**](https://smartmarketretail.com/contact)
+[Are you ready to see how a Micro Market could revolutionize your workplace? Contact the experts at Smart Market Retail today for a free, no-obligation consultation.](https://smartmarketretail.com/contact)

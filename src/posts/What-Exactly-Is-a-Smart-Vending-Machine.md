@@ -72,4 +72,4 @@ If you're ready to bring this revolution in convenience to your business or prop
 
 &nbsp;
 
-[**Contact Smart Market Retail today to schedule a free consultation and discover the perfect smart vending solution for your needs.**](https://smartmarketretail.com/contact)
+[Contact Smart Market Retail today to schedule a free consultation and discover the perfect smart vending solution for your needs.](https://smartmarketretail.com/contact)

@@ -41,4 +41,4 @@ Upgrading from a traditional vending machine is no longer just about offering be
 
 &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
-[**Contact Smart Market Retail today to schedule a free consultation and discover the perfect smart vending solution for your needs.**](https://smartmarketretail.com/contact)
+[Contact Smart Market Retail today to schedule a free consultation and discover the perfect smart vending solution for your needs.](https://smartmarketretail.com/contact)

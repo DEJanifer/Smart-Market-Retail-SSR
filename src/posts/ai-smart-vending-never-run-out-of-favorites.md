@@ -1,11 +1,11 @@
 ---
 title: "AI-Powered Inventory Management: Why Smart Vending & Micro Markets Never Runs Out of Your Favorites"
-slug: "ai-smart-vending-never-run-out-of-favorites"
+slug: "ai-smart-vending-never-run-out-of-your-favorites"
 date: "September 5, 2025"
 author: "Devin Janifer"
 summary: "This comprehensive post explores how AI-powered Smart Vending Machines and Micro Markets are revolutionizing breakrooms via real-time inventory tracking and AI inventory management. Learn how these no-cost unattended retail solutions enable an always-stocked workplace amenity that boost employee morale and productivity."
-imageUrl: "/blog-9.02-ai-powered-inventory-process.webp"
-metaTitle: "AI Smart Vending: Never Run Out of Favorites"
+imageUrl: "/blog-9-ai-powered-inventory-process.webp"
+metaTitle: "AI Smart Vending: Never Run Out of Your Favorites"
 metaDescription: "Tired of empty shelves? Discover how AI-powered smart vending machines & micro markets use real-time tracking to keep your workplace stocked."
 ---
 

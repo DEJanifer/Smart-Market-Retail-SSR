@@ -124,7 +124,7 @@ const BlogPostPage: React.FC = () => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={ogTitle} />
+        <meta property="og:image:alt" content={post.metaDescription || `${ogTitle} - Smart Market Retail blog post`} />
 
         {/* --- Article Specific OG Tags --- */}
         <meta property="article:published_time" content={publishedTime} />

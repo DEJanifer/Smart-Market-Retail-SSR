@@ -24,6 +24,10 @@ Unattended retail isn't a single concept but a wide spectrum of solutions, rangi
 - Cashierless Stores: This is the most advanced form of unattended retail, [once pioneered by concepts like Amazon Go,](https://techcrunch.com/2024/10/04/amazon-closes-more-of-its-cashierless-convenience-stores/) and is now being perfected by [Cantaloupe Inc via their “Smart Aisle” concept](https://www.youtube.com/watch?v=hOZdLDHM7f4&t=144). These fully cashierless stores use a sophisticated network of cameras, sensors, and AI to track what customers pick up. Shoppers can literally walk in, grab what they need, and walk out, with the purchase automatically charged to their account.
     - Best for: Large-scale, high-tech urban retail environments with significant capital investment.
 
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/blog-10-simple-infographic.webp" alt="An infographic showing the self-service technology behind automated retail, including AI and cloud connectivity." class="w-full h-auto object-cover"/>
+</div>
+
 #### <span class="text-mint">The Technology Powering the</span> <span class="text-coral">Revolution</span>
 The explosion of unattended retail is made possible by the convergence of several powerful technologies. This self-service technology is the engine that makes the entire experience seamless, secure, and reliable. A recent report by [MarketsandMarkets projects the automated retail market will reach $44.3 billion by 2029,](https://www.marketsandmarkets.com/Market-Reports/retail-automation-market-1247.html) a testament to the rapid adoption of these underlying technologies.
 Key components include:
@@ -40,6 +44,10 @@ Why has automated retail become one of the most significant trends in modern com
 2.	Massive Operational Efficiency: For the business, the advantages are just as compelling. By automating the checkout process, businesses can significantly reduce labor costs and open up new revenue streams in locations where a traditional store would be impossible, dramatically improving operational efficiency.
 
 3.	Unprecedented Data & Insight: [Unlike an old vending machine](https://smartmarketretail.com/blog/boost-your-propertys-value-with-ai-powered-smart-vending)—a "black box" of information—modern unattended retail systems are data goldmines. Every transaction provides insight into what's selling, at what time, and on what day. This allows an operator to continuously optimize the product selection, ensuring the offerings are perfectly tailored to the tastes of your specific location and eliminating waste from unpopular items.
+
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/blog-10-micro-market-in-upscale-apartment.webp" alt="An example of an unattended retail Micro Market in an upscale apartment, showing its real-world application." class="w-full h-auto object-cover"/>
+</div>
 
 #### <span class="text-mint">Real-World Applications:</span> <span class="text-coral">Where Unattended Retail is Thriving</span>
 The flexibility of unattended retail means it can be deployed in a virtually limitless number of environments. You are now seeing these solutions thrive in:

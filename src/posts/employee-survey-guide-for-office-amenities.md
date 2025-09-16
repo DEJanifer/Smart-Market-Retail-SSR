@@ -10,7 +10,7 @@ metaDescription: "Learn how to run an effective employee survey about office ame
 ---
 
 ### <span class="text-mint"> The Suggestion Box is Dead.</span> <span class="text-coral">Long Live the Strategic Survey.</span>
-Every manager has seen it: the dusty suggestion box in the corner of the breakroom, filled with a mix of jokes, impossible requests, and a few genuinely good ideas that were never acted upon. The old way of gathering employee feedback was passive, unstructured, and often, a dead end. But in today's competitive talent market, understanding what your team wants and needs is no longer optional—it's a critical strategy for success. The most powerful tool in your arsenal? A well-designed [employee survey.](https://www.surveymonkey.com/curiosity/good-survey-questions/)
+Every manager has seen it: the dusty suggestion box in the corner of the breakroom, filled with a mix of jokes, impossible requests, and a few genuinely good ideas that were never acted upon. The old way of gathering employee feedback was passive, unstructured, and often, a dead end. But in today's competitive talent market, understanding what your team wants and needs is no longer optional—it's a critical strategy for success. The most powerful tool in your arsenal? [A well-designed employee survey.](https://www.surveymonkey.com/curiosity/good-survey-questions/)
 
 Asking your team for their opinion on office amenities can feel daunting. What if you can't deliver on their requests? What if you don't know what to do with the data? This guide is here to eliminate that uncertainty. We will walk you through a simple, five-step process for creating and deploying a survey that yields actionable insights. More importantly, we’ll show you how to translate that valuable employee feedback into high-impact, no-cost upgrades that will dramatically improve your workplace.
 
@@ -66,7 +66,7 @@ The best part? Addressing your team's biggest requests doesn't have to impact yo
 
 
 #### <span class="text-mint">Step 5: Closing the Loop and</span> <span class="text-coral">Boosting Engagement</span>
-Your work isn't done once the new market or machine is installed. The final, most crucial step is to communicate back to your team. This closes the feedback loop and is a massive driver of [employee engagement.](https://www.gallup.com/workplace/357764/fast-feedback-fuels-performance.aspx)
+Your work isn't done once the new market or machine is installed. The final, most crucial step is to communicate back to your team. [This closes the feedback loop and is a massive driver of employee engagement.](https://www.gallup.com/workplace/357764/fast-feedback-fuels-performance.aspx)
 Send out a company-wide email that says:
 
   "Team, a few weeks ago, we asked for your feedback on our office amenities, and your response was incredible. You told us you wanted more variety, healthier options, and more convenient ways to pay. We listened. We are excited to announce our new partnership with [Smart Market Retail](https://smartmarketretail.com/about) to bring a [Micro Market / AI-Powered Vending Machine] to our breakroom, launching on [Date]. 

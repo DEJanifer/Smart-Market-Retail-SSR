@@ -40,6 +40,10 @@ One of the most exciting developments branching from smart vending is cashierles
 This "grab-and-go" model is a game-changer for high-traffic areas where speed is essential. But naturally, it brings up questions about security and accuracy. Is it reliable? Is my payment information safe?
 The answer is a resounding yes. These systems are built on [secure platforms that are fully PCI compliant](https://www.pcisecuritystandards.org/about_us/), the same security standard used by all major credit card processors. The technology for identifying products is incredibly accurate, often using a combination of weight sensors on the shelves and computer vision to cross-reference items. In the rare case of a billing error, transactions are logged and can be easily reviewed and refunded by the operator.
 
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/smart-store-600-with-fresh-food.webp" alt="A guest making a selection at the smart store 600 duo stocked with beverages and fresh food." class="w-full h-auto object-cover"/>
+</div>
+
 #### <span class="text-mint">A Storefront in a Box:</span> <span class="text-coral">Smart Vending as an Automated Retail Solution</span>
 It’s time to stop thinking of these devices as just "machines" and start seeing them as what they truly are: compact, powerful automated retail solutions. For businesses, property managers, and institutions, they represent a revolutionary way to offer products and amenities without the significant overhead of a traditional storefront or cafeteria.
 

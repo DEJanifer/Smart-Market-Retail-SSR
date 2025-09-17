@@ -29,6 +29,10 @@ What are you doing to support them? Too often, the service bay breakroom is a fo
 
 A study by the [National Automobile Dealers Association (NADA)](https://www.nada.org/nada/issues/service-technicians) has consistently highlighted the growing technician shortage, making retention more critical than ever. Providing excellent breakroom solutions for your sales staff and technicians—with real food, a great office coffee service, and 24/7 availability—is a powerful statement. It tells your team you’re invested in their well-being, which is a key factor in long-term loyalty.
 
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/smart-store-600-with-fresh-food.webp" alt="A dealership employee making a selection at the smart store 600 duo stocked with beverages and fresh food." class="w-full h-auto object-cover"/>
+</div>
+
 #### <span class="text-mint"> The Unified Solution:</span> <span class="text-coral">Micro Markets and Smart Vending for Dealerships</span>
 So, how do you solve both the customer and employee challenge with a single upgrade? You implement modern unattended retail solutions.
 

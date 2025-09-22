@@ -1,7 +1,7 @@
 ---
 title: "Why Zero-Cost Amenities Are the Smart Choice for Cash-Conscious Businesses"
 slug: "a-guide-to-zero-cost-amenities"
-date: "09/20/2025"
+date: "09/22/2025"
 author: "Devin Janifer"
 summary: "This guide explains the business model behind zero-cost amenities. Learn how no-cost workplace perks like Micro Markets and Smart Vending serve as high ROI amenities that boost morale and help you attract and retain talent without impacting your budget."
 imageUrl: "/Blog-12-returns-on-zero-cost-amenities.webp"

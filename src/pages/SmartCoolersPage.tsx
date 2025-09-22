@@ -100,7 +100,7 @@ const SmartCoolersPage: React.FC = () => {
             <div className="fade-in mb-12">
               <div className="w-full max-w-4xl mx-auto">
                 <img 
-                  src="/CoolSmart_AI_Solo_Center_medium.webp" 
+                  src="/blog-11-coolsmart-ai-market-snacks-food-breakroom.webp" 
                   alt="CoolSmart AI Market - Next Generation Smart Cooler"
                   className="w-full h-auto object-contain rounded-lg"
                 />
@@ -129,7 +129,7 @@ const SmartCoolersPage: React.FC = () => {
             <div className="fade-in mb-8">
               <div className="w-full">
                 <img 
-                  src="/CoolSmart_AI_Solo_Center_medium.webp" 
+                  src="/blog-11-coolsmart-ai-market-snacks-food-breakroom.webp" 
                   alt="CoolSmart AI Market - Next Generation Smart Cooler"
                   className="w-full h-auto object-contain rounded-lg"
                 />

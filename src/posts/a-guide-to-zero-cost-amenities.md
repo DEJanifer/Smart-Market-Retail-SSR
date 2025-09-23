@@ -21,15 +21,6 @@ Think of it like a popular food truck operating in your parking lot. You provide
 
 This is the principle behind the most [popular no-cost workplace perks.](https://www.peoplekeep.com/blog/affordable-benefits-to-offer-instead-of-raise) It's a true partnership model that removes the financial barrier for the host business, making world-class modern office amenities accessible to companies of all sizes. This is a far cry from capital-intensive projects like building an on-site gym or a fully subsidized cafeteria.
 
-### <span class="text-mint">The Business Model Explained:</span> <span class="text-coral">How "Free" Is a Win-Win</span>
-The number one question business owners have is, "How can this possibly be free? What's the catch?" The answer lies in a transparent, mutually beneficial partnership.
-
-- [Your Contribution (The Host Business):](https://smartmarketretail.com/faq#micro-market-space-requirements) You provide a dedicated space in your breakroom or common area, along with standard electricity. Most importantly, you provide access to a community of potential customers—your employees, tenants, or guests.
-
-- [Our Contribution (The Service Provider):](https://smartmarketretail.com/faq#cost-to-business) We, as the unattended retail operator, invest our capital. We provide the state-of-the-art equipment (like a self-checkout market or an AI-powered smart vending machines), the technology, the professional installation, and the full-service management. This includes regularly stocking the market with desirable products, performing maintenance, and handling all customer service. 
-
-This model incentivizes us to perform at our absolute peak; we only succeed if we provide an amenity so good that your community wants to use it, which aligns our goals for quality and service perfectly with yours. This model only works if we provide an amenity that your people actually love and use. Our success is directly tied to yours, ensuring we are always motivated to provide the best possible service and product selection. It’s a perfect example of a truly win-win business relationship.
-
 ### <span class="text-mint">The ROI of $0: Measuring the Impact</span> <span class="text-coral">on Your Business</span>
 When your initial investment is zero, [your return on investment is technically infinite.](https://smartmarketretail.com/blog/roi-of-modern-office-amenities) But beyond the math, these budget-friendly employee benefits and customer perks deliver tangible returns that impact your most critical business metrics, both internally and externally.
 
@@ -40,6 +31,19 @@ The modern workforce expects more than just a paycheck. On-site amenities [contr
 **The External ROI: Enhancing the Customer and Guest Experience**
 
 For your customers and guests, a high-quality amenity transforms a passive waiting period into a positive brand interaction. [Think of a car dealership's customer lounge,](https://smartmarketretail.com/blog/car-dealership-amenity-that-boost-csi) a hospital waiting room, or a residential building's common area. Providing access to fresh food, premium coffee, and healthy snacks shows a level of care that builds loyalty and generates positive reviews. It solves an immediate need for your guests, reducing their frustration and dramatically improving their perception of your business, which is a direct investment in customer satisfaction and retention.
+
+<div class="mb-6 sm:mb-8 rounded-lg overflow-hidden">
+  <img src="/Blog-12-no-cost-win-win-business-model.webp" alt="A diagram explaining the win-win business model behind no-cost workplace perks for businesses." class="w-full h-auto object-cover"/>
+</div>
+
+### <span class="text-mint">The Business Model Explained:</span> <span class="text-coral">How "Free" Is a Win-Win</span>
+The number one question business owners have is, "How can this possibly be free? What's the catch?" The answer lies in a transparent, mutually beneficial partnership.
+
+- [Your Contribution (The Host Business):](https://smartmarketretail.com/faq#micro-market-space-requirements) You provide a dedicated space in your breakroom or common area, along with standard electricity. Most importantly, you provide access to a community of potential customers—your employees, tenants, or guests.
+
+- [Our Contribution (The Service Provider):](https://smartmarketretail.com/faq#cost-to-business) We, as the unattended retail operator, invest our capital. We provide the state-of-the-art equipment (like a self-checkout market or an AI-powered smart vending machines), the technology, the professional installation, and the full-service management. This includes regularly stocking the market with desirable products, performing maintenance, and handling all customer service. 
+
+This model incentivizes us to perform at our absolute peak; we only succeed if we provide an amenity so good that your community wants to use it, which aligns our goals for quality and service perfectly with yours. This model only works if we provide an amenity that your people actually love and use. Our success is directly tied to yours, ensuring we are always motivated to provide the best possible service and product selection. It’s a perfect example of a truly win-win business relationship.
 
 ### <span class="text-mint">The Gold Standard of Zero-Cost Amenities:</span> <span class="text-coral">Modern Vending</span>
 While many services can fit this model, the gold standard in the world of no-cost perks is modern breakroom solutions and customer-facing retail. The technology behind Smart Vending and Micro Markets makes them perfectly suited for the vendor-managed model in any environment.

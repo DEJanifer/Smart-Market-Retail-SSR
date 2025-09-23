@@ -6,7 +6,7 @@ author: "Devin Janifer"
 summary: "This guide explains the business model behind zero-cost amenities. Learn how no-cost workplace perks like Micro Markets and Smart Vending serve as high ROI amenities that boost morale and help you attract and retain talent without impacting your budget."
 imageUrl: "/Blog-12-returns-on-zero-cost-amenities.webp"
 metaTitle: "A Guide to Zero-Cost Amenities"
-metaDescription: "Discover how zero-cost amenities like Micro Markets and Smart Vending can upgrade your communal and work spaces. Learn about the no-cost business model that helps you attract and retain talent, customers, and guest."
+metaDescription: "Discover how zero-cost amenities like Micro Markets and Smart Vending can upgrade your communal and work spaces. This no-cost business model that helps you attract and retain talent, customers, and guest."
 ---
 
 ## <span class="text-mint">The Modern Perk Paradox: </span> <span class="text-coral">How to Deliver More with a $0 Budget</span>

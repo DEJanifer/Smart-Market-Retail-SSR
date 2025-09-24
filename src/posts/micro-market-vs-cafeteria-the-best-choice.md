@@ -32,7 +32,7 @@ A corporate Cafeteria represents a massive and ongoing financial commitment. The
 - **Operational Overheads:** Utilities, maintenance, and management fees.
 - **Subsidies:** Most companies must heavily subsidize meal prices to make them affordable for employees, creating a constant drain on the budget.
 
-A Micro Market, on the other hand, is one of the premier no-cost amenities. With ith many providers, including Smart Market Retail the model is much simpler:
+A Micro Market, on the other hand, is one of the premier no-cost amenities. With many providers, including Smart Market Retail, the model is much simpler:
 
 - **Capital Investment:** $0. We provide and install [all equipment at no cost.](https://smartmarketretail.com/faq#cost-to-business)
 - **Staffing Costs:** $0. The market is unmanned.
